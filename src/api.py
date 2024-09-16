@@ -53,7 +53,31 @@ def call_openai():
         return result
     else:
         print(f"Request failed with status code {response.status_code}")
+
     return "No valid responses"
+
+
+@app.route('/api/password', methods=['POST'])
+def check_password():
+    data = request.get_json()
+    password = data.get('password')
+    if password == 'the Password':
+        response_data = {
+            'status': 'success',
+            'detail': 'Aceess granted!'
+        }
+    else:
+        if password == 'Help':
+            response_data = {
+                'status': 'success',
+                'detail': 'Aceess granted!'
+            }
+        else :
+            response_data = {
+                'status': 'denied',
+                'detail': 'Access denied!'
+            }
+    return jsonify(response_data), 201
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0",port=5000)

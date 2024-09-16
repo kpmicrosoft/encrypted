@@ -14,3 +14,8 @@ PW: DevTest123!.
 
 start-python-api.sh
 start-react-client.sh
+
+
+# Open AI
+https://platform.openai.com/api-keys
+
