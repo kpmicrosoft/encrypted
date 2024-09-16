@@ -11,6 +11,11 @@ def get_resource():
     }
     return jsonify(data)
 
+@app.route('/', methods=['GET'])
+@app.route('/api', methods=['GET'])
+def get_api():
+    return "Hello, World!"
+
 @app.route('/api/resource', methods=['POST'])
 def create_resource():
     new_data = request.get_json()
@@ -18,4 +23,4 @@ def create_resource():
     return jsonify(new_data), 201
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8080)
