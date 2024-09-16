@@ -1,5 +1,3 @@
-# encrypted
 
-Python REST service for encrypted
+# Encrypted
 
-Connects to Open AI end points and services UI
