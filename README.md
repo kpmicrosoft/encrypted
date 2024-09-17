@@ -3,6 +3,15 @@
 
 ## Run the rest api
 
+## Python setup
+
+pip install requests
+pip install openai
+pip install flask
+pip install flask_cors
+
+## Run the rest api
+
 export OPENAI_API_KEY="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"
 python3 api.py
 
@@ -14,7 +23,7 @@ python3 api.py
 ## Call the API
 
 From Local: curl <http://0.0.0.0/5000>
-Azure hosted URL: 
+Azure hosted URL:
 Dev: curl 48.211.219.114:5000
 PROD: curl 172.210.234.90:5000
 
@@ -46,7 +55,7 @@ curl 172.210.234.90:5000
 
 ## Level 2 REST end points
 
-curl http://127.0.0.1:5000/api/level2/sos
+curl <http://127.0.0.1:5000/api/level2/sos>
 
 ## Level 3 REST end points
 
@@ -58,3 +67,7 @@ curl <http://127.0.0.1:5000/api/1/help>
 
 curl <http://127.0.0.1:5000/api/1/chat_bot>
 {"query":"query","parameters": {"param1":"value1"}}
+Download bruno
+<https://www.usebruno.com/>
+
+Import collections from [EncryptEd.json](rest-api-collections%2FEncryptEd.json)
