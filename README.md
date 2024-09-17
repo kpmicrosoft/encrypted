@@ -35,6 +35,6 @@ curl http://127.0.0.1:5000/api/level2/sos
 ## Level 4 REST end points
 
 ## Common end points
-
+curl http://127.0.0.1:5000/api/1/help
 
 
