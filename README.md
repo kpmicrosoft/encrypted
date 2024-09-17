@@ -25,23 +25,7 @@ https://platform.openai.com/api-keys
 # REST end points for UI
 curl 172.210.234.90:5000
 
-## Level 1 REST end points
-http://127.0.0.1:5000/api/level1/password
-```json
-{
-    "password": "password"
-}
-```
-## Level 2 REST end points
-curl http://127.0.0.1:5000/api/level2/sos
+Download bruno
+https://www.usebruno.com/
 
-## Level 3 REST end points
-
-## Level 4 REST end points
-
-## Common end points
-curl http://127.0.0.1:5000/api/1/help
-curl http://127.0.0.1:5000/api/1/chat_bot
-{"query":"query","parameters": {"param1":"value1"}}
-
-
+Import collections from [EncryptEd.json](rest-api-collections%2FEncryptEd.json)

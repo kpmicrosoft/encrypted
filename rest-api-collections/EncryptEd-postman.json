@@ -1,0 +1,747 @@
+{
+  "info": {
+    "name": "MT",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "bruno",
+      "event": []
+    },
+    {
+      "name": "CloudImport",
+      "item": [
+        {
+          "name": "https---aka-ms-MTToken",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://aka.ms/MTToken",
+              "host": [
+                "aka",
+                "ms"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "https---flipservice-prod-azurewebsites-net-Home-GetFlipStatus",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://flipservice-prod.azurewebsites.net/Home/GetFlipStatus",
+              "host": [
+                "flipservice-prod",
+                "azurewebsites",
+                "net"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "https---magnetar-tracking-MTPrime-PROD-CHIE01-1-proxy-application_1714904186272_37212-SPARK-MTSparkContextSample_kpendyala_WC_10",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://magnetar/tracking/MTPrime-PROD-CHIE01-1/proxy/application_1714904186272_37212/SPARK/MTSparkContextSample_kpendyala_WC_10",
+              "host": [
+                "magnetar"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "EntraID",
+      "item": [
+        {
+          "name": "GenerateEntraID",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com/api/oauth2/token",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "kpendyala@microsoft.com",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "password",
+                  "value": "xandrWinter23!",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "ServicePrincipal_EntraIDToken",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "description": "",
+            "url": {
+              "raw": "https://login.microsoftonline.com/975f013f-7f24-47e8-a7d3-abc4752bf346/oauth2/v2.0/token",
+              "host": [
+                "login",
+                "microsoftonline",
+                "com"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "value": "4fe06744-dfb5-434a-bedd-0ba640e959c3",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "scope",
+                  "value": "api://1c0b8c88-563f-4b97-abdf-207172a50d2c/.default",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "3418Q~KZA0ca5raxTOViLrunINS7ZwjdLcUmnagU",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "VerifyEntraID",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com/testaad.",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Spark",
+      "item": [
+        {
+          "name": "BingAds",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4432/batches?cluster=MTPrime-PROD-CH01-0&subcluster=MTPrime-PROD-CH01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "cluster",
+                  "value": "MTPrime-PROD-CH01-0"
+                },
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-CH01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{ \r\n\"name\": \"bootcampLivyBatch_kpendyala_3\",\r\n\"proxyUser\": \"kpendyala\",\r\n\"className\": \"com.microsoft.mt.sample.Main\", \r\n\"executorMemory\": \"2g\",\r\n\"driverMemory\": \"4g\",\r\n\"executorCores\": 1,  \r\n\"queue\": \"BingAdsBI\",   \r\n\"args\": [\"hdfs://MTPrime-CH01-0/tmp/kpendyala/input/sample.txt\",\"hdfs://MTPrime-CH01-0/tmp/kpendyala/output/MTSparkContextSample_output\"], \r\n\"file\": \"hdfs://MTPrime-CH01-0/tmp/kpendyala/jars/MTSparkContextSample-1.0.jar\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "BingAdsBI Queue - Ebee Job",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4432/batches?cluster=MTPrime-PROD-CH01-0&subcluster=MTPrime-PROD-CH01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "cluster",
+                  "value": "MTPrime-PROD-CH01-0"
+                },
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-CH01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{ \r\n\"name\": \"bootcampLivyBatch_kpendyala_3\",\r\n\"proxyUser\": \"kpendyala\",\r\n\"className\": \"com.microsoft.mt.sample.Main\", \r\n\"executorMemory\": \"2g\",\r\n\"driverMemory\": \"4g\",\r\n\"executorCores\": 1,  \r\n\"queue\": \"BingAdsBI\",   \r\n\"args\": [\"hdfs://MTPrime-CH01-0/tmp/kpendyala/input/sample.txt\",\"hdfs://MTPrime-CH01-0/tmp/kpendyala/output/MTSparkContextSample_output\"], \r\n\"file\": \"hdfs://MTPrime-CH01-0/tmp/kpendyala/jars/MTSparkContextSample-1.0.jar\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "BN01 Wrapper",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4432/batches?cluster=MTPrime-PROD-BN01-0&subcluster=MTPrime-PROD-BN01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "cluster",
+                  "value": "MTPrime-PROD-BN01-0"
+                },
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-BN01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"MTSpark_kpendyala_BN2_13\",\r\n    \"proxyUser\": \"kpendyala\",\r\n    \"className\": \"com.microsoft.mt.sample.MTSparkWordCountWrapper\",\r\n    \"executorMemory\": \"2g\",\r\n    \"driverMemory\": \"4g\",\r\n    \"executorCores\": 1,\r\n    \"args\": [\r\n        \"hdfs://MTPrime-BN01-0\",\r\n        \"/user/kpendyala/bootcamp/launcher/input/words.txt\",\r\n        \"/user/kpendyala/bootcamp/launcher/output/\",\r\n        \"/user/kpendyala/bootcamp/launcher/\",\r\n        \"app_ebee-mr-job.jar\",\r\n        \"com.microsoft.mt.sample.MTMapReduceWordCountJob\"\r\n    ],\r\n    \"file\": \"hdfs://MTPrime-BN01-0/user/kpendyala/bootcamp/launcher/app_ebee-mr-job.jar\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "BN20",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4432/batches/104871?cluster=MTPrime-PROD-BN01-0&subcluster=MTPrime-PROD-BN01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "cluster",
+                  "value": "MTPrime-PROD-BN01-0"
+                },
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-BN01-0"
+                }
+              ],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "CHIE01",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4432/batches/7900605?cluster=MTPrime-Prod-CHIE01-1&subcluster=MTPrime-Prod-CHIE01-1",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "cluster",
+                  "value": "MTPrime-Prod-CHIE01-1"
+                },
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-Prod-CHIE01-1"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "https://portal.magnetar.binginternal.com/applicationhistory/appattempt/appattempt_1714904186272_47384_000001",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "CHIE01 BingAdsBi",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4432/batches?cluster=MTPrime-Prod-CHIE01-1&subcluster=MTPrime-Prod-CHIE01-1",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "cluster",
+                  "value": "MTPrime-Prod-CHIE01-1"
+                },
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-Prod-CHIE01-1"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"MTSparkContextSample_kpendyala_WC_27\",\r\n    \"proxyUser\": \"kpendyala\",\r\n    \"className\": \"com.microsoft.mt.sample.MTSparkWordCountWrapper\",\r\n    \"executorMemory\": \"2g\",\r\n    \"driverMemory\": \"4g\",\r\n    \"executorCores\": 1,\r\n    \"queue\" : \"BingAdsBI\",\r\n    \"args\": [\r\n        \"hdfs://MTPrime-CHIE01-1\",\r\n        \"/user/kpendyala/mt/input/textdata.txt\",\r\n        \"/user/kpendyala/mt/output/MTSparkContextSample_output\",\r\n        \"/user/kpendyala/mt/jars/\",\r\n        \"app_ebee-mr-job.jar\",\r\n        \"com.microsoft.mt.sample.MTMapReduceWordCountJob\"\r\n    ],\r\n    \"file\": \"/user/kpendyala/mt/jars/app_ebee-mr-job.jar\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "CO01 Get Status",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrcGVuZHlhbGEiLCJhZG1pbiI6ZmFsc2UsImlzcyI6InJlc3RzZXJ2ZXIubWFnbmV0YXIiLCJhdWQiOiJtYWduZXRhciIsIm90eXBlIjoiTVQiLCJvc3ViIjoia3BlbmR5YWxhIiwiaWF0IjoxNzE4NjgxMjE4LCJleHAiOjE3MjEyNzMyMTh9.MhS2tROjVvseCohCOEeYZ7kiH6wBVGRcpJv3sbXVbh56cekz6Od6AImvsaz8HPhvpeA05H522VXhqKPBOqIx5IBpDyl2KO0ZuOBL2Ut_2bt8B2P-1nTBik3P5ZPZR1sYzi6Xr0Xg6EuZ_xmcMTKv6MiBWBZUxeAF_X14ofJ0VadiXaQ932bVQpl28932YZOphHiUwk046jgp23eQ9zqdSKD05ittz4X6ukHR2ldEMk4GFNLrW8Z5VidADX1njf9WZiYWTtq-TLdzjZsNTetNYF_7FBt2OEqG1_-zjqXoX0OqcStcV7r5jfUHDQQfJRlQS_4-buQSPqhrDs8jeRPLRg",
+                "disabled": false,
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "text/plain",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4433/v1/Frameworks/bootcamp-launcher-job1-CO01-kp-lld-45/FrameworkStatus?subcluster=MTPrime-PROD-CO01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-CO01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[Framework]\r\nVersion=2\r\nTaskRoles=LRSMaster\r\nRetryPolicy=ServiceRetryPolicy_Release\r\nPlatformSpecificParameters=ServiceOnYarnSpecificParameters\r\nOwner=kpendyala\r\n[LRSMaster]\r\nTaskNumber=1\r\nTaskService=LRSMasterService\r\nTaskRetryPolicy=ServiceRetryPolicy_Release\r\n[LRSMasterService]\r\nVersion=1\r\nEntryPoint=launcher\\start_old.bat\r\nSourceLocations=hdfs://MTPrime-CO01-0/user/kpendyala/bootcamp/launcher\r\nResource=LRSMasterResource\r\n[LRSMasterResource]\r\nCpuNumber=1\r\nMemoryMB=1\r\n[ServiceRetryPolicy_Release]\r\nMaxRetryCount=-1\r\nFancyRetryPolicy=false\r\n[ServiceOnYarnSpecificParameters]\r\nTaskNodeLabel=persistent\r\nAMNodeLabel=persistent\r\nQueue=BingAdsBI\r\nPriority=100",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "CO01",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrcGVuZHlhbGEiLCJhZG1pbiI6ZmFsc2UsImlzcyI6InJlc3RzZXJ2ZXIubWFnbmV0YXIiLCJhdWQiOiJtYWduZXRhciIsIm90eXBlIjoiTVQiLCJvc3ViIjoia3BlbmR5YWxhIiwiaWF0IjoxNzE4NjgxMjE4LCJleHAiOjE3MjEyNzMyMTh9.MhS2tROjVvseCohCOEeYZ7kiH6wBVGRcpJv3sbXVbh56cekz6Od6AImvsaz8HPhvpeA05H522VXhqKPBOqIx5IBpDyl2KO0ZuOBL2Ut_2bt8B2P-1nTBik3P5ZPZR1sYzi6Xr0Xg6EuZ_xmcMTKv6MiBWBZUxeAF_X14ofJ0VadiXaQ932bVQpl28932YZOphHiUwk046jgp23eQ9zqdSKD05ittz4X6ukHR2ldEMk4GFNLrW8Z5VidADX1njf9WZiYWTtq-TLdzjZsNTetNYF_7FBt2OEqG1_-zjqXoX0OqcStcV7r5jfUHDQQfJRlQS_4-buQSPqhrDs8jeRPLRg",
+                "disabled": false,
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "text/plain",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4433/v1/Frameworks/bootcamp-launcher-job1-CO01-kp-raw-11?subcluster=MTPrime-PROD-CO01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-CO01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[Framework]\r\nVersion=2\r\nTaskRoles=LRSMaster\r\nRetryPolicy=ServiceRetryPolicy_Release\r\nPlatformSpecificParameters=ServiceOnYarnSpecificParameters\r\nOwner=kpendyala\r\n[LRSMaster]\r\nTaskNumber=1\r\nTaskService=LRSMasterService\r\nTaskRetryPolicy=ServiceRetryPolicy_Release\r\n[LRSMasterService]\r\nVersion=1\r\nEntryPoint=launcher\\start_old.bat\r\nSourceLocations=hdfs://MTPrime-CO01-0/user/kpendyala/bootcamp/launcher\r\nResource=LRSMasterResource\r\n[LRSMasterResource]\r\nCpuNumber=1\r\nMemoryMB=1\r\n[ServiceRetryPolicy_Release]\r\nMaxRetryCount=-1\r\nFancyRetryPolicy=false\r\n[ServiceOnYarnSpecificParameters]\r\nTaskNodeLabel=persistent\r\nAMNodeLabel=persistent\r\nQueue=BingAdsBI\r\nPriority=100",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "CO01_Basic Wrapper",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4432/batches?cluster=MTPrime-PROD-CO01-0&subcluster=MTPrime-PROD-CO01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "cluster",
+                  "value": "MTPrime-PROD-CO01-0"
+                },
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-CO01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"MTSpark_kpendyala_WC_13\",\r\n    \"proxyUser\": \"kpendyala\",\r\n    \"className\": \"com.microsoft.mt.sample.MTSparkWordCountWrapper\",\r\n    \"executorMemory\": \"2g\",\r\n    \"driverMemory\": \"4g\",\r\n    \"executorCores\": 1,\r\n    \"args\": [\r\n        \"hdfs://MTPrime-CO01-0\",\r\n        \"/user/kpendyala/bootcamp/launcher/input/words.txt\",\r\n        \"/user/kpendyala/bootcamp/launcher/output/\",\r\n        \"/user/kpendyala/bootcamp/launcher/\",\r\n        \"app_ebee-mr-job.jar\",\r\n        \"com.microsoft.mt.sample.MTMapReduceWordCountJob\"\r\n    ],\r\n    \"file\": \"hdfs://MTPrime-CO01-0/user/kpendyala/bootcamp/launcher/app_ebee-mr-job.jar\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "CO01_Basic",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4432/batches/729256?cluster=MTPrime-PROD-CO01-0&subcluster=MTPrime-PROD-CO01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "cluster",
+                  "value": "MTPrime-PROD-CO01-0"
+                },
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-CO01-0"
+                }
+              ],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Launcher",
+      "item": [
+        {
+          "name": "BN01",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrcGVuZHlhbGEiLCJhZG1pbiI6ZmFsc2UsImlzcyI6InJlc3RzZXJ2ZXIubWFnbmV0YXIiLCJhdWQiOiJtYWduZXRhciIsIm90eXBlIjoiTVQiLCJvc3ViIjoia3BlbmR5YWxhIiwiaWF0IjoxNzE4NjgxMjE4LCJleHAiOjE3MjEyNzMyMTh9.MhS2tROjVvseCohCOEeYZ7kiH6wBVGRcpJv3sbXVbh56cekz6Od6AImvsaz8HPhvpeA05H522VXhqKPBOqIx5IBpDyl2KO0ZuOBL2Ut_2bt8B2P-1nTBik3P5ZPZR1sYzi6Xr0Xg6EuZ_xmcMTKv6MiBWBZUxeAF_X14ofJ0VadiXaQ932bVQpl28932YZOphHiUwk046jgp23eQ9zqdSKD05ittz4X6ukHR2ldEMk4GFNLrW8Z5VidADX1njf9WZiYWTtq-TLdzjZsNTetNYF_7FBt2OEqG1_-zjqXoX0OqcStcV7r5jfUHDQQfJRlQS_4-buQSPqhrDs8jeRPLRg",
+                "disabled": false,
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "text/plain",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4433/v1/Frameworks/bootcamp-launcher-job1-bn01-13?subcluster=MTPrime-PROD-BN01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-BN01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[Framework]\r\nVersion=2\r\nTaskRoles=LRSMaster\r\nRetryPolicy=ServiceRetryPolicy_Release\r\nPlatformSpecificParameters=ServiceOnYarnSpecificParameters\r\nOwner=kpendyala\r\n[LRSMaster]\r\nTaskNumber=1\r\nTaskService=LRSMasterService\r\nTaskRetryPolicy=ServiceRetryPolicy_Release\r\n[LRSMasterService]\r\nVersion=1\r\nEntryPoint=launcher\\start-bn01.bat\r\nSourceLocations=hdfs://MTPrime-BN01-0/user/kpendyala/bootcamp/launcher\r\nResource=LRSMasterResource\r\n[LRSMasterResource]\r\nCpuNumber=1\r\nMemoryMB=1\r\n[ServiceRetryPolicy_Release]\r\nMaxRetryCount=-1\r\nFancyRetryPolicy=false\r\n[ServiceOnYarnSpecificParameters]\r\nTaskNodeLabel=*besteffort*|*persistent*|*secondary*\r\nAMNodeLabel=*besteffort*|*persistent*|*secondary*",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "CO01_KP",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrcGVuZHlhbGEiLCJhZG1pbiI6ZmFsc2UsImlzcyI6InJlc3RzZXJ2ZXIubWFnbmV0YXIiLCJhdWQiOiJtYWduZXRhciIsIm90eXBlIjoiTVQiLCJvc3ViIjoia3BlbmR5YWxhIiwiaWF0IjoxNzE4NjgxMjE4LCJleHAiOjE3MjEyNzMyMTh9.MhS2tROjVvseCohCOEeYZ7kiH6wBVGRcpJv3sbXVbh56cekz6Od6AImvsaz8HPhvpeA05H522VXhqKPBOqIx5IBpDyl2KO0ZuOBL2Ut_2bt8B2P-1nTBik3P5ZPZR1sYzi6Xr0Xg6EuZ_xmcMTKv6MiBWBZUxeAF_X14ofJ0VadiXaQ932bVQpl28932YZOphHiUwk046jgp23eQ9zqdSKD05ittz4X6ukHR2ldEMk4GFNLrW8Z5VidADX1njf9WZiYWTtq-TLdzjZsNTetNYF_7FBt2OEqG1_-zjqXoX0OqcStcV7r5jfUHDQQfJRlQS_4-buQSPqhrDs8jeRPLRg",
+                "disabled": false,
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "text/plain",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4433/v1/Frameworks/kp105mjob12?subcluster=MTPrime-PROD-CO01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-CO01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[Framework]\r\nVersion=2\r\nTaskRoles=LRSMaster\r\nRetryPolicy=ServiceRetryPolicy_Release\r\nPlatformSpecificParameters=ServiceOnYarnSpecificParameters\r\nOwner=kpendyala\r\n[LRSMaster]\r\nTaskNumber=1\r\nTaskService=LRSMasterService\r\nTaskRetryPolicy=ServiceRetryPolicy_Release\r\n[LRSMasterService]\r\nVersion=1\r\nEntryPoint=cls/run-kp.bat\r\nSourceLocations=hdfs://MTPrime-CO01-0/user/kpendyala/mr/cls\r\nResource=LRSMasterResource\r\n[LRSMasterResource]\r\nCpuNumber=4\r\nMemoryMB=100\r\n[ServiceRetryPolicy_Release]\r\nMaxRetryCount=-1\r\nFancyRetryPolicy=false\r\n[ServiceOnYarnSpecificParameters]\r\nTaskNodeLabel=persistent\r\nAMNodeLabel=persistent\r\nQueue=BingAdsBI\r\nPriority=100",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "CO01_LetsRockIt",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrcGVuZHlhbGEiLCJhZG1pbiI6ZmFsc2UsImlzcyI6InJlc3RzZXJ2ZXIubWFnbmV0YXIiLCJhdWQiOiJtYWduZXRhciIsIm90eXBlIjoiTVQiLCJvc3ViIjoia3BlbmR5YWxhIiwiaWF0IjoxNzE4NjgxMjE4LCJleHAiOjE3MjEyNzMyMTh9.MhS2tROjVvseCohCOEeYZ7kiH6wBVGRcpJv3sbXVbh56cekz6Od6AImvsaz8HPhvpeA05H522VXhqKPBOqIx5IBpDyl2KO0ZuOBL2Ut_2bt8B2P-1nTBik3P5ZPZR1sYzi6Xr0Xg6EuZ_xmcMTKv6MiBWBZUxeAF_X14ofJ0VadiXaQ932bVQpl28932YZOphHiUwk046jgp23eQ9zqdSKD05ittz4X6ukHR2ldEMk4GFNLrW8Z5VidADX1njf9WZiYWTtq-TLdzjZsNTetNYF_7FBt2OEqG1_-zjqXoX0OqcStcV7r5jfUHDQQfJRlQS_4-buQSPqhrDs8jeRPLRg",
+                "disabled": false,
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "text/plain",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "description": "",
+            "url": {
+              "raw": "https://api.magnetar.binginternal.com:4433/v1/Frameworks/kp105m-tes-1t?subcluster=MTPrime-PROD-CO01-0",
+              "host": [
+                "api",
+                "magnetar",
+                "binginternal",
+                "com"
+              ],
+              "path": [],
+              "query": [
+                {
+                  "key": "subcluster",
+                  "value": "MTPrime-PROD-CO01-0"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[Framework]\r\nVersion=2\r\nTaskRoles=LRSMaster\r\nRetryPolicy=ServiceRetryPolicy_Release\r\nPlatformSpecificParameters=ServiceOnYarnSpecificParameters\r\nOwner=kpendyala\r\n[LRSMaster]\r\nTaskNumber=1\r\nTaskService=LRSMasterService\r\nTaskRetryPolicy=ServiceRetryPolicy_Release\r\n[LRSMasterService]\r\nVersion=1\r\nEntryPoint=kp105m_feed_segment_base_mr_v1.0.0.zip/run.bat\r\nSourceLocations=hdfs://MTPrime-CO01-0/user/kpendyala/kp105m_feed_segment_base_mr/kp105m_feed_segment_base_mr_v1.0.0.zip\r\nResource=LRSMasterResource\r\n[LRSMasterResource]\r\nCpuNumber=4\r\nMemoryMB=100\r\n[ServiceRetryPolicy_Release]\r\nMaxRetryCount=-1\r\nFancyRetryPolicy=false\r\n[ServiceOnYarnSpecificParameters]\r\nTaskNodeLabel=persistent\r\nAMNodeLabel=persistent\r\nQueue=BingAdsBI\r\nPriority=100",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": []
+}
