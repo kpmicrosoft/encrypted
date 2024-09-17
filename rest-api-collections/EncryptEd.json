@@ -4,10 +4,34 @@
   "items": [
     {
       "type": "http",
+      "name": "All_chatbot",
+      "seq": 8,
+      "request": {
+        "url": "{{host}}:{{port}}/api/5/chat_bot",
+        "method": "POST",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\"query\":\"query\",\"parameters\":{\"param1\":\"value1\",\"param2\":\"value2\"}}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
       "name": "Check",
       "seq": 1,
       "request": {
-        "url": "{{dev}}:5000",
+        "url": "{{host}}:{{port}}",
         "method": "GET",
         "headers": [],
         "params": [],
@@ -27,58 +51,10 @@
     },
     {
       "type": "http",
-      "name": "Level1_Password",
-      "seq": 2,
+      "name": "Help",
+      "seq": 7,
       "request": {
-        "url": "{{dev}}:5000/api/level1/password",
-        "method": "POST",
-        "headers": [],
-        "params": [],
-        "body": {
-          "mode": "json",
-          "json": "{\n    \"password\": \"password\"\n}",
-          "formUrlEncoded": [],
-          "multipartForm": []
-        },
-        "script": {},
-        "vars": {},
-        "assertions": [],
-        "tests": "",
-        "auth": {
-          "mode": "none"
-        }
-      }
-    },
-    {
-      "type": "http",
-      "name": "Level3_encryption_validate",
-      "seq": 3,
-      "request": {
-        "url": "{{dev}}:5000/api/level3/validate",
-        "method": "POST",
-        "headers": [],
-        "params": [],
-        "body": {
-          "mode": "json",
-          "json": "{\"encrypted_message\":\"encrypted_message\",\"decrypted_message\":\"decrypted_message\",\"encryption_method\":\"encryption_method\"}",
-          "formUrlEncoded": [],
-          "multipartForm": []
-        },
-        "script": {},
-        "vars": {},
-        "assertions": [],
-        "tests": "",
-        "auth": {
-          "mode": "none"
-        }
-      }
-    },
-    {
-      "type": "http",
-      "name": "Level2_SOS_Local",
-      "seq": 4,
-      "request": {
-        "url": "{{local}}:5000/api/level2/sos",
+        "url": "{{host}}:{{port}}/api/2/help",
         "method": "GET",
         "headers": [],
         "params": [],
@@ -99,10 +75,58 @@
     },
     {
       "type": "http",
+      "name": "Level1_Password",
+      "seq": 2,
+      "request": {
+        "url": "{{host}}:{{port}}/api/level1/password",
+        "method": "POST",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n    \"password\": \"password\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
       "name": "Level2_SOS",
       "seq": 5,
       "request": {
-        "url": "{{dev}}:5000/api/level2/sos",
+        "url": "{{host}}:{{port}}/api/level2/sos",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Level2_SOS_Local",
+      "seq": 4,
+      "request": {
+        "url": "{{host}}:{{port}}/api/level2/sos",
         "method": "GET",
         "headers": [],
         "params": [],
@@ -126,7 +150,7 @@
       "name": "Level3_encryption_method",
       "seq": 6,
       "request": {
-        "url": "{{dev}}:5000/api/level3/encryption-method",
+        "url": "{{host}}:{{port}}/api/level3/encryption-method",
         "method": "GET",
         "headers": [],
         "params": [],
@@ -147,40 +171,16 @@
     },
     {
       "type": "http",
-      "name": "Help",
-      "seq": 7,
+      "name": "Level3_encryption_validate",
+      "seq": 3,
       "request": {
-        "url": "{{dev}}:5000/api/2/help",
-        "method": "GET",
-        "headers": [],
-        "params": [],
-        "body": {
-          "mode": "json",
-          "json": "",
-          "formUrlEncoded": [],
-          "multipartForm": []
-        },
-        "script": {},
-        "vars": {},
-        "assertions": [],
-        "tests": "",
-        "auth": {
-          "mode": "none"
-        }
-      }
-    },
-    {
-      "type": "http",
-      "name": "All_chatbot",
-      "seq": 8,
-      "request": {
-        "url": "{{dev}}:5000/api/1/chat_bot",
+        "url": "{{host}}:{{port}}/api/level3/validate",
         "method": "POST",
         "headers": [],
         "params": [],
         "body": {
           "mode": "json",
-          "json": "{\"query\":\"query\",\"parameters\":{\"param1\":\"value1\",\"param2\":\"value2\"}}",
+          "json": "{\"encrypted_message\":\"encrypted_message\",\"decrypted_message\":\"decrypted_message\",\"encryption_method\":\"encryption_method\"}",
           "formUrlEncoded": [],
           "multipartForm": []
         },
@@ -194,47 +194,69 @@
       }
     }
   ],
-  "environments": [],
+  "activeEnvironmentUid": "xpDW2d5kiAtZhQU9WeVbs",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "host",
+          "value": "48.211.219.114",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "port",
+          "value": "5000",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "dev"
+    },
+    {
+      "variables": [
+        {
+          "name": "host",
+          "value": "127.0.0.1",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "port",
+          "value": "5000",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "local"
+    },
+    {
+      "variables": [
+        {
+          "name": "host",
+          "value": "172.210.234.90",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "port",
+          "value": "5000",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "prod"
+    }
+  ],
   "root": {
     "request": {
-      "vars": {
-        "req": [
-          {
-            "name": "dev",
-            "value": "127.0.0.1",
-            "enabled": true,
-            "local": false,
-            "uid": "bUrq1jU8wqWRxVbL6iDBB"
-          },
-          {
-            "name": "port",
-            "value": "5000",
-            "enabled": true,
-            "local": false,
-            "uid": "eH9n62k4YW32xoPhdOMNB"
-          },
-          {
-            "name": "prod",
-            "value": "172.210.234.90",
-            "enabled": true,
-            "local": false,
-            "uid": "orf6C9kzIUlEHNwRnBAb6"
-          },
-          {
-            "name": "local",
-            "value": "127.0.0.1",
-            "enabled": true,
-            "local": false,
-            "uid": "9cDMwVqoSUh9gphIksure"
-          },
-          {
-            "uid": "gG1tdsEU0rB1BiNzSIG6D",
-            "name": "dev_1",
-            "value": "48.211.219.114",
-            "enabled": true
-          }
-        ]
-      }
+      "vars": {}
     }
   },
   "brunoConfig": {
