@@ -38,7 +38,7 @@
 
         [X] Set up React Routing
 
-#### R3dPdn@
+#### Day1: R3dPdn@
 
 * Created initial project
 * installed Tailwinds CSS and Material UI for styling
@@ -57,9 +57,16 @@
 
     TODO:
 
-        [ ] Connect to the API for AI integration
+        [X] Connect to the API for AI integration
         
-        [ ] Establish global styling 
+        [X] Establish global styling 
+
+### Day2: R3dPdn@
+
+* Added side nav menu
+* Connected to the API
+* Added some minor styling
+* complete Question 1
 
 ### 09-18-24
 
