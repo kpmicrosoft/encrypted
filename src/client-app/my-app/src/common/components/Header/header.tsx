@@ -23,7 +23,7 @@ export default function Header(): JSX.Element {
         className="items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:hidden">
+        <div className="flex flex-col lg:hidden">
           <img src={`img/logo.png`} alt="Logo" className="logo" />
           <button
             type="button"
@@ -46,7 +46,7 @@ export default function Header(): JSX.Element {
             </svg>
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-2">
+        <div className="hidden flex-col lg:flex lg:gap-x-2">
           <img src={`img/logo.png`} alt="Logo" className="logo" />
           {menuItems}
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
