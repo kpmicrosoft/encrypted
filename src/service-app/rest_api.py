@@ -40,16 +40,40 @@ def create_resource():
 
 @app.route('/api/ai', methods=['POST'])
 def call_openai():
-    # request_data = request.get_json()
-    # prompt = request_data.get('prompt', 'Translate the following English text to French: "Hello, how are you?"')
-    prompt = 'Translate the following English text to French: "Hello, how are you?"'
+    data = request.get_json()
+    query = data.get('query',
+                     'sos message from planets')  # Use the provided query or default to "sos message from planets"
+    parameters = data.get('parameters', {})
+
+    num_valid = int(parameters.get('valid combination', 1))
+    num_responses = int(parameters.get('number of responses ', 4))
+    values = parameters.get('values', "name, coordinates (latitude, longitude), description, message, color")
+
+    prompt = f"""
+        Generate {num_responses} responses to the query: '{query}' with the following fields: {values}.
+        {num_valid} of the responses should be valid, and the rest should have misinformation or incorrect types for one or more fields. The response should be in valid JSON format without any extra text, no code block syntax, and no "json" labels.
+        """
+
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
             {"role": "user", "content": prompt}
         ]
     )
-    print(response) # debugging
-    return jsonify(response.choices[0].message.__dict__)
+
+    raw_response = response.choices[0].message.content.strip()
+
+    try:
+        response_json = eval(raw_response)  # Convert string to JSON-like list (ensure trusted source)
+    except SyntaxError:
+        return jsonify({"error": "Failed to generate valid JSON from response"}), 400
+
+    response_data = {
+        'response': response_json,
+        'query': query,
+        'parameters': parameters
+    }
+
+    return jsonify(response_data), 201
 
 
