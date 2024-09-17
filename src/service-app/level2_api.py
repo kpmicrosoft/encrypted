@@ -5,6 +5,7 @@ import json
 from rest_api import app
 @app.route('/api/level2/sos', methods=['GET'])
 def sos_messages():
+
     data = [
 
             {"name": "Mercury", "coordinates": {"latitude": 0.39, "longitude": 0.0}, "description": "Closest planet to the Sun", "message": "Help! I'm stranded on Mercury!", "code": "purple}"},

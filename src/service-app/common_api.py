@@ -5,6 +5,7 @@ from flask_session import Session
 import os
 import hashlib
 
+
 def generate_session_id(name: str) -> str:
     salt = os.urandom(16)  # Generate a random salt
     name_salt = name.encode() + salt
