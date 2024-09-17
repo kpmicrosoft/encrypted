@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Silkscreen';
+    src: local('MyFont'), url(../public/fonts/Silkscreen-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Silkscreen-Bold';
+    src: local('MyFont'), url(../public/fonts/Silkscreen-Bold.ttf) format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: Silkscreen;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.7;
+    background-color: #3f50b5;
+}

@@ -1,5 +1,7 @@
 import { Button } from "@mui/material";
 
+import "./button.scss";
+
 interface Props {
   text: string;
   variant?: "contained" | "outlined" | "text";
@@ -8,5 +10,9 @@ interface Props {
 }
 
 export default function EncryptedButton({ text, variant, onClick, route }: Props): JSX.Element {
-  return <Button variant={variant ?? "contained"} onClick={onClick} href={route}>{text}</Button>;
+  return (
+    <Button className="button" variant={variant ?? "contained"} onClick={onClick} href={route}>
+      {text}
+    </Button>
+  )
 }

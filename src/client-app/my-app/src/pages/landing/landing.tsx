@@ -1,14 +1,15 @@
-import AiResponse from "../../common/components/Ai-Response/ai-response";
-import EncryptedButton from "../../common/components/Button/button";
 import TextBox from "../../common/components/TextBox/text-box";
 import BaseLayout from "../../common/layouts/base";
-import { callGpt3 } from "../../common/services/Copilot/copilot-service";
-import LevelOne from "../../levels/01-enter-password/enter-password";
+import LevelOne from "../../levels/01-Enter-Password/enter-password";
+
+import "./landing.scss";
 
 export default function Landing() {
   return (
     <BaseLayout>
-      <TextBox text="Your first adventure is to unlock the secret password and fight your adversary" />
+      <div className="intro">
+        <TextBox text="Your first adventure is to unlock the secret password and fight your adversary" />
+      </div>
       <LevelOne />
     </BaseLayout>
   );

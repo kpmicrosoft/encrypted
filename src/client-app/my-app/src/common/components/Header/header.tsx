@@ -20,7 +20,7 @@ export default function Header(): JSX.Element {
   ));
 
   return (
-    <header className="header absolute inset-x-0 top-0 flex" color="primary">
+    <header className="header inset-x-0 top-0 flex" color="primary">
       <nav
         className="items-center justify-between p-6 sm:px-8"
         aria-label="Global"
