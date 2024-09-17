@@ -1,5 +1,5 @@
 interface Props {
-    text: string;
+    text: string| undefined;
 }  
 
 export default function TextBox({text}: Props): JSX.Element {

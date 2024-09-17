@@ -14,6 +14,10 @@
 
 ### Password to "Enter" the Website
 
+    [ ] AI Response Box
+
+    [ ] Text Input
+
 ### Spot the Phish
 
 ### Identifying Deepfakes and Misinformation

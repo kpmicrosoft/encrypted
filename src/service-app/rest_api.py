@@ -4,7 +4,7 @@ import json
 from openai import OpenAI
 
 app = Flask(__name__)
-client = OpenAI()
+client = OpenAI('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')
 
 from level2_api import sos_messages
 from level1_api import check_password
