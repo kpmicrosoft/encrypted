@@ -36,5 +36,7 @@ curl http://127.0.0.1:5000/api/level2/sos
 
 ## Common end points
 curl http://127.0.0.1:5000/api/1/help
+curl http://127.0.0.1:5000/api/1/chat_bot
+{"query":"query","parameters": {"param1":"value1"}}
 
 
