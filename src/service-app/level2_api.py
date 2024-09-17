@@ -6,12 +6,12 @@ from rest_api import app
 @app.route('/api/level2/sos', methods=['GET'])
 def sos_messages():
     data = {
-        "message": "Here are some planets in our solar system",
+        "message": "Requesting help. Come and get me!",
         "planets": [
-            {"name": "Mercury", "coordinates": {"x": 0.39, "y": 0.0}, "help_message": "Closest planet to the Sun"},
-            {"name": "Venus", "coordinates": {"x": 0.72, "y": 0.0}, "help_message": "Second planet from the Sun"},
-            {"name": "Earth", "coordinates": {"x": 1.0, "y": 0.0}, "help_message": "Our home planet"},
-            {"name": "Mars", "coordinates": {"x": 1.52, "y": 0.0}, "help_message": "Known as the Red Planet"}
+            {"name": "Mercury", "coordinates": {"x": 0.39, "y": 0.0}, "description": "Closest planet to the Sun"},
+            {"name": "Venus", "coordinates": {"x": 0.72, "y": 0.0}, "description": "Second planet from the Sun"},
+            {"name": "Earth", "coordinates": {"x": 1.0, "y": 0.0}, "description": "Our home planet"},
+            {"name": "Mars", "coordinates": {"x": 1.52, "y": 0.0}, "description": "Known as the Red Planet"}
         ]
     }
     return jsonify(data)

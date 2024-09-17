@@ -8,6 +8,7 @@ from level2_api import sos_messages
 from level1_api import check_password
 from common_api import help
 from common_api import chat_bot
+from level3_api import encryption_method
 
 @app.route('/api/resource', methods=['GET'])
 def get_resource():
