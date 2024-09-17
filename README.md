@@ -21,7 +21,12 @@ https://platform.openai.com/api-keys
 
 
 ## Level 1 REST end points
-
+http://127.0.0.1:5000/api/level1/password
+```json
+{
+    "password": "password"
+}
+```
 ## Level 2 REST end points
 curl http://127.0.0.1:5000/api/level2/sos
 
@@ -30,5 +35,6 @@ curl http://127.0.0.1:5000/api/level2/sos
 ## Level 4 REST end points
 
 ## Common end points
+
 
 
