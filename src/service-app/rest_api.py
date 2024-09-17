@@ -1,13 +1,16 @@
 from flask import Flask, jsonify, request
 import requests
 import json
+from openai import OpenAI
 
 app = Flask(__name__)
+client = OpenAI()
 
 from level2_api import sos_messages
 from level1_api import check_password
 from common_api import help
 from common_api import chat_bot
+from level3_api import encryption_method
 
 @app.route('/api/resource', methods=['GET'])
 def get_resource():
@@ -31,33 +34,16 @@ def create_resource():
 
 @app.route('/api/ai', methods=['POST'])
 def call_openai():
-    # Define the endpoint URL and API key
-    url = 'https://api.openai.com/v1/engines/davinci-codex/completions'
-    api_key = 'sk-svcacct-dAFHZVuO8M5L9rDu-ekulp5wOwr9r5iKZbOXXyfY5cqc8Y4XG0jTsR1s4LhIY0lpqr2mFdXoYZfT3BlbkFJZ-8EdpGdF1iMTmOpnJ5FhS5ozSQEGq767SXZJBJs_uxVswovgmmI2c97S1e-hJ3kms3H6yUDcAA'
-
-    # Define the headers
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {api_key}'
-    }
-
-    # Define the data payload
-    data = {
-        'prompt': 'Translate the following English text to French: "Hello, how are you?"',
-        'max_tokens': 60
-    }
-
-    # Make the POST request
-    response = requests.post(url, headers=headers, data=json.dumps(data))
-
-    # Check if the request was successful
-    if response.status_code == 200:
-        # Parse the JSON response
-        result = response.json()
-        return result
-    else:
-        print(f"Request failed with status code {response.status_code}")
-
-    return "No valid responses"
+    # request_data = request.get_json()
+    # prompt = request_data.get('prompt', 'Translate the following English text to French: "Hello, how are you?"')
+    prompt = 'Translate the following English text to French: "Hello, how are you?"'
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
+    )
+    print(response) # debugging
+    return jsonify(response.choices[0].message.__dict__)
 
 
