@@ -2,9 +2,9 @@ from flask import Flask, jsonify, request
 import requests
 import json
 
-
 app = Flask(__name__)
 
+from level2_api import sos_messages
 @app.route('/api/resource', methods=['GET'])
 def get_resource():
     data = {

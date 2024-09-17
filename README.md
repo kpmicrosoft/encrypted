@@ -19,3 +19,16 @@ start-react-client.sh
 # Open AI
 https://platform.openai.com/api-keys
 
+
+## Level 1 REST end points
+
+## Level 2 REST end points
+curl http://127.0.0.1:5000/api/level2/sos
+
+## Level 3 REST end points
+
+## Level 4 REST end points
+
+## Common end points
+
+
