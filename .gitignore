@@ -2,4 +2,4 @@
 *.pyc
 *.iml
 __pycache__/
-.idea/
+flask_session_files/
