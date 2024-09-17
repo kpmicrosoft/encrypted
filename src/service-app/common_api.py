@@ -1,6 +1,28 @@
 from flask import Flask, jsonify, request
-
 from rest_api import app, client
+from flask import Flask, session
+from flask_session import Session
+import os
+import hashlib
+
+def generate_session_id(name: str) -> str:
+    salt = os.urandom(16)  # Generate a random salt
+    name_salt = name.encode() + salt
+    session_id = hashlib.sha256(name_salt).hexdigest()
+    return session_id
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()  # Now using JSON data
+    username = data.get('username')
+    
+    if username:
+        # Store username in session and generate a session ID
+        session['user_id'] = generate_session_id(username)
+        return jsonify({'message': 'Login successful', 'user_id': session['user_id']}), 200
+    
+    return jsonify({'message': 'Username required'}), 400
 
 
 @app.route('/api/<level>/help', methods=['GET'])
