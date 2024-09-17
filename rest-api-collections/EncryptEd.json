@@ -75,16 +75,16 @@
     },
     {
       "type": "http",
-      "name": "Level1_Password",
-      "seq": 2,
+      "name": "Level2_SOS_Local",
+      "seq": 4,
       "request": {
-        "url": "{{host}}:{{port}}/api/level1/password",
-        "method": "POST",
+        "url": "{{host}}:{{port}}/api/level2/sos",
+        "method": "GET",
         "headers": [],
         "params": [],
         "body": {
           "mode": "json",
-          "json": "{\n    \"password\": \"password\"\n}",
+          "json": "",
           "formUrlEncoded": [],
           "multipartForm": []
         },
@@ -123,16 +123,16 @@
     },
     {
       "type": "http",
-      "name": "Level2_SOS_Local",
-      "seq": 4,
+      "name": "Level1_Password",
+      "seq": 2,
       "request": {
-        "url": "{{host}}:{{port}}/api/level2/sos",
-        "method": "GET",
+        "url": "{{host}}:{{port}}/api/level1/password",
+        "method": "POST",
         "headers": [],
         "params": [],
         "body": {
           "mode": "json",
-          "json": "",
+          "json": "{\n    \"password\": \"password\"\n}",
           "formUrlEncoded": [],
           "multipartForm": []
         },
@@ -192,9 +192,33 @@
           "mode": "none"
         }
       }
+    },
+    {
+      "type": "http",
+      "name": "Level4_setup",
+      "seq": 10,
+      "request": {
+        "url": "{{host}}:{{port}}/api/level4/setup",
+        "method": "POST",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\"query\":\"query\",\"parameters\":{\"param1\":\"value1\",\"param2\":\"value2\"}}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
     }
   ],
-  "activeEnvironmentUid": "xpDW2d5kiAtZhQU9WeVbs",
+  "activeEnvironmentUid": "9YoKi0bPB93nCgGr1Ql5r",
   "environments": [
     {
       "variables": [
@@ -254,11 +278,6 @@
       "name": "prod"
     }
   ],
-  "root": {
-    "request": {
-      "vars": {}
-    }
-  },
   "brunoConfig": {
     "version": "1",
     "name": "EncryptEd",
