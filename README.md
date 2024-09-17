@@ -2,7 +2,8 @@
 # Encrypted
 
 ##  run the rest api
-python3 app.py
+export OPENAI_API_KEY="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"
+python3 api.py
 
 ### Call the API
 From Local: curl http://0.0.0.0/5000
