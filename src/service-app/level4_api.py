@@ -3,8 +3,7 @@ from flask import Flask, jsonify, request
 from rest_api import app
 @app.route('/api/level4/setup', methods=['GET'])
 def setup():
-    data = """
-            {
+    data = {
               "message": "List of astronauts",
               "astronauts": [
                 {
@@ -33,5 +32,5 @@ def setup():
                 }
               ]
             }
-            """
+
     return jsonify(data)

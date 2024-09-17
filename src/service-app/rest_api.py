@@ -8,8 +8,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-os.environ['OPENAI_API_KEY'] = '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'
-
 client = OpenAI()
 
 
@@ -18,6 +16,7 @@ from level1_api import check_password
 from common_api import help
 from common_api import chat_bot
 from level3_api import encryption_method
+from level4_api import setup
 
 @app.route('/api/resource', methods=['GET'])
 def get_resource():
