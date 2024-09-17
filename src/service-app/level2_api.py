@@ -10,9 +10,9 @@ from common_api import call_openai_internal
 def sos_messages():
     query = "sos message from planets in the spce coordinates"
     parameters = {
-        "num_valid": 2,
+        "num_valid": 1,
         "num_responses": 4,
-        "values": "name, coordinates (latitude, longitude), description, message, color"
+        "values": "name, description, message, color"
     }
     ret = call_openai_internal(query, parameters)
     return ret

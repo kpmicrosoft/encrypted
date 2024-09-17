@@ -74,7 +74,7 @@ def call_openai_internal(query, parameters):
     prompt = f"""
             Generate {num_responses} responses to the query: '{query}' with the following fields: {values}. The audience is a middle schooler, so everything should be human readable.
             {num_valid} of the responses should be valid, and the rest should have misinformation for one or more fields. 
-            Randomize the valid and invalid responses. Each response should have an 'id' field (starting from 1) and a 'valid' field (True if the response is correct, False if the response contains misinformation).
+            Randomize the valid and invalid responses. Each response should have an 'id' field (starting from 1) and a 'valid' field (True if the response is valid, False if the response contains misinformation).
             The response should be in valid JSON format without any extra text, no code block syntax, and no "json" labels.
         """
 
