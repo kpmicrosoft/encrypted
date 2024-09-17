@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 
-from rest_api import app
+from rest_api import app, client
 
 
 @app.route('/api/<level>/help', methods=['GET'])
@@ -21,28 +21,17 @@ def chat_bot(level):
     data = request.get_json()
     query = data.get('query')
     parameters = data.get('parameters')
-    response = "This is a response from level {} chat bot (AS IF haha).".format(level)
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
-            {"role": "user", "content": prompt}
+            {"role": "user", "content": query}
         ]
     )
 
-    if level == "1":
-        pass
-    elif level == "2":
-        pass
-    elif level == "3":
-        pass
-    elif level == "4":
-        pass
-    else:
-        response = 'request form Invalid level'
-
     response_data = {
-        'response': response,
+        'response': response.choices[0].message.content,
         'query': query,
         'parameters': parameters
     }
+
     return jsonify(response_data), 201
