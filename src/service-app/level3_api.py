@@ -3,9 +3,6 @@ from flask import Flask, jsonify, request
 from rest_api import app
 from common_api import get_response
 
-from rest_api import app
-
-
 @app.route('/api/level3/hint', methods=['GET'])
 def provide_hint():
     return jsonify({"Hint": "The key 'GALAXY' is used in a Vigenère cipher, where each letter shifts the corresponding digit."})
