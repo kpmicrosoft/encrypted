@@ -2,22 +2,29 @@ import { Configuration, getConfig } from "../../configuration";
 
 let config: Configuration = getConfig();
 
-export interface IPlanetCoordinates {
-    latitude: number;
-    longitude: number;
-}
 export interface ISosMessage{
-    name: string;
-    coordinates: IPlanetCoordinates;
+    color: string;
     description: string;
+    id: number;
     message: string;
-    code: string;
+    name: string;
+    valid: boolean;
 }
-export async function GetSosMessages() : Promise<ISosMessage[]>{
+export interface ISosResponse {
+    invalid_ids: number[];
+    parameters: {
+        num_responses: number;
+        num_valid: number;
+        values: string;
+    };
+    query: string;
+    response: ISosMessage[];
+}
+export async function GetSosMessages() : Promise<ISosResponse>{
     const response = await fetch(`http://${config.url}:${config.port}/api/level2/sos`);
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
-    const data: ISosMessage[] = await response.json();
+    const data: ISosResponse = await response.json();
     return data;
 }
