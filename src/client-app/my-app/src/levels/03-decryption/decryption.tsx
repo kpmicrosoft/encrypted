@@ -54,7 +54,10 @@ export default function Decryption() {
 
   return (
     <div>
-      <Message user={UserType.Astronaut} message={`My coordinates are ##X:${encryptedCoordinates.x}## and ##Y:${encryptedCoordinates.y}##. I used the standard encryption method for this.`} />
+      <Message
+        user={UserType.Astronaut}
+        message={`My coordinates are ##X:${encryptedCoordinates.x}## and ##Y:${encryptedCoordinates.y}##. I used the standard encryption method for this.`}
+      />
       <div className="my-2">
         <h3>ENTER DESTINATION COORDINATES</h3>
         <div className="my-2">
@@ -63,7 +66,11 @@ export default function Decryption() {
         </div>
         <EncryptedButton text="LAUNCH" />
       </div>
-      <Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
+      <Conversation
+        messages={chatMessages}
+        onMessageSent={onMessageSent}
+        isAiThinking={false}
+      ></Conversation>
     </div>
   );
 }

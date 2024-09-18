@@ -25,11 +25,7 @@ export default function BaseLayout({ children }: Props): JSX.Element {
           </aside>
         </div>
 
-        <div className="relative isolate px-6 lg:px-8 grow min-h-96">
-          <div
-            className="inset-x-0 -top-40 -z-10 transform-gpu blur-3xl sm:-top-80"
-            aria-hidden="true"
-          ></div>
+        <div className="relative isolate px-6 min-h-96">
           <div className="mx-auto max-w-2xl">
             <div className="text-center">{children}</div>
           </div>

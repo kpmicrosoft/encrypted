@@ -3,22 +3,22 @@ import EncryptedButton from "../Button/button";
 
 interface Props {
   onSend: (message: string) => void;
+  isAiThinking: boolean;
 }
 
 
-export default function ChatInput({ onSend }: Props): JSX.Element {
-  const [inputValue, setInputValue] = useState('');
+export default function ChatInput({ onSend, isAiThinking }: Props): JSX.Element {
+  const [inputValue, setInputValue] = useState("");
 
   const handleSendClick = () => {
-    if (inputValue.trim() !== '') {
+    if (inputValue.trim() !== "") {
       onSend(inputValue);
-      setInputValue(''); // Clear the input after sending
+      setInputValue(""); // Clear the input after sending
     }
   };
 
-
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSendClick();
     }
   };
@@ -31,7 +31,9 @@ export default function ChatInput({ onSend }: Props): JSX.Element {
         placeholder="Type a message..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleKeyPress}></input>
+        onKeyDown={handleKeyPress}
+        disabled={isAiThinking}
+      ></input>
       <EncryptedButton text="SEND" onClick={handleSendClick}></EncryptedButton>
     </div>
   );

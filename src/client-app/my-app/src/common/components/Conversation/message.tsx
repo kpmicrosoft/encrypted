@@ -10,7 +10,7 @@ export enum UserType {
   Astronaut
 }
 
-const userImage = `/img/hacker man.png`;
+const userImage = `/img/orange-hacker.png`;
 const botImage = `/img/hacker-face.png`;
 const astronautImage = `/img/hacker-astronaut.jpeg`;
 
@@ -38,7 +38,7 @@ export default function Message({ message, user }: IMessage): JSX.Element {
   }
 
   return (
-    <div className="message m-2 p-1 flex flex-row">
+    <div className="message m-2 p-1 flex flex-row min min-w-32">
       <div className="flex-none">
         <img className="icon logo" src={getIcon()} alt={getAlt()}></img>
       </div>

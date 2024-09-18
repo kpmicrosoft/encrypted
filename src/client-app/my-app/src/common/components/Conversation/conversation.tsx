@@ -3,11 +3,12 @@ import Message, { IMessage } from "./message";
 import "./conversation.scss";
 import { useEffect, useRef } from "react";
 interface Props {
-  messages: IMessage[],
+  messages: IMessage[];
   onMessageSent: (message: string) => void;
+  isAiThinking: boolean;
 }
 
-export default function Conversation({ messages, onMessageSent }: Props): JSX.Element {
+export default function Conversation({ messages, onMessageSent, isAiThinking }: Props): JSX.Element {
   const messageBoxes = messages.map((message) =>
     <Message message={message.message} user={message.user} />);
 
@@ -23,7 +24,7 @@ export default function Conversation({ messages, onMessageSent }: Props): JSX.El
       <div className="message-feed" ref={messageFeedRef}>
         {messageBoxes}
       </div>
-      <ChatInput onSend={onMessageSent}></ChatInput>
+      <ChatInput onSend={onMessageSent} isAiThinking={isAiThinking}></ChatInput>
     </div>
   );
 }
