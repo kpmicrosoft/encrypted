@@ -3,6 +3,7 @@ import SosMessage from "../../common/components/SosMessage/sos-message";
 import { GetSosMessages, ISosMessage } from "../../common/services/planet-phishing-service";
 import { IMessage, UserType } from "../../common/components/Conversation/message";
 import Conversation from "../../common/components/Conversation/conversation";
+import { sendMessageToAi } from "../../common/services/Copilot/copilot-service";
 
 export default function SpotThePhish() {
   //TODO: remove the default messages and retrieve them from API when it works
@@ -37,9 +38,14 @@ export default function SpotThePhish() {
   ])
 
   const onMessageSent = (message: string) => {
-    setChatMessages([...chatMessages, { message: message, user: UserType.User }]);
+    addMessageToFeed(message, UserType.User);
+    sendMessageToAi(message).then((response) => {
+      addMessageToFeed(response.data.response[0].message, UserType.Bot);
+    });
+  }
 
-    //TODO: call the backend to get the response
+  const addMessageToFeed = (message: string, user: UserType) => {
+    setChatMessages((prevMessages) => [...prevMessages, { message: message, user: user }]);
   }
 
   return (

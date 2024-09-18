@@ -1,10 +1,29 @@
 import axios from "axios";
 import { Configuration, getConfig } from "../../../configuration";
 
-export function callGpt3() {
+export function sendMessageToAi(message: string) {
   let config: Configuration = getConfig();
 
-  return "GPT-3 called";
+  let url = `http://${config.url}:${config.port}/api/ai`;
+  let body = {
+    query: message,
+    parameters: {
+      num_valid: 1,
+      num_responses: 1,
+      values: "message"}
+  };
+
+  const options = {
+    method: "POST",
+    url: url,
+    headers: {
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    data: body,
+  };
+  
+  return axios.request(options);
 }
 
 export async function Level_1_Password(password: string): Promise<any> {
