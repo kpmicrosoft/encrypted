@@ -5,11 +5,13 @@ import { IMessage, UserType } from "../../common/components/Conversation/message
 import Conversation from "../../common/components/Conversation/conversation";
 import { sendMessageToAi } from "../../common/services/Copilot/copilot-service";
 import { shuffleArray } from "../../common/services/shuffler-service";
+import EncryptedButton from "../../common/components/Button/button";
 
 export default function SpotThePhish() {
   //TODO: remove the default messages and retrieve them from API when it works
   const [sosMessages, setSosMessages] = useState<ISosMessage[]>([]);
   const [invalidMessages, setInvalidMessages] = useState<number[]>([]);
+  const [success, setSuccess] = useState<boolean>(false);
   useEffect(() => {
     (async () => {
       const response = await GetSosMessages();
@@ -29,12 +31,20 @@ export default function SpotThePhish() {
       }
     ])
   }
-  
+
   const onSosMessageClicked = (sosMessage: ISosMessage) => {
+    if (success) { return }
     if (invalidMessages.indexOf(sosMessage.id)) {
-      setChatMessages([...chatMessages, { message: "This is a fake distress call. Try again!", user: UserType.Bot }]);
+      addMessageToFeed("This is a fake distress call. Try again!", UserType.Bot);
     } else {
-      setChatMessages([...chatMessages, { message: "This is a real distress call. Well done!", user: UserType.Bot }]);
+      setSuccess(true);
+      addMessageToFeed("This is a real distress call. Well done!", UserType.Bot);
+      addMessageToFeed(
+        <a
+        href={"/level3"}
+        className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+      >Click here to continue our adventure!</a>
+        , UserType.Bot);
     }
   }
 
@@ -49,7 +59,7 @@ export default function SpotThePhish() {
     });
   }
 
-  const addMessageToFeed = (message: string, user: UserType) => {
+  const addMessageToFeed = (message: string | JSX.Element, user: UserType) => {
     setChatMessages((prevMessages) => [...prevMessages, { message: message, user: user }]);
   }
 
@@ -58,7 +68,7 @@ export default function SpotThePhish() {
       <div>
         {sosMessageBoxes}
       </div>
-        <Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
+      <Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
     </div>
   );
 }
