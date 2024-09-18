@@ -3,3 +3,5 @@
 *.iml
 __pycache__/
 flask_session_files/
+.venv/
+./src/venv/
