@@ -6,14 +6,13 @@ import os
 import hashlib
 
 @app.route('/api/mock_chat', methods=['POST'])
-def add_message():
+def mock_chat():
     message = request.form.get('message')
+    return add_message(message)
 
-    if 'conversation' not in session:
-        session['conversation'] = []
 
-    session['conversation'].append(message)
-    return "Message added!"
+
+
 
 @app.route('/api/conversation', methods=['GET'])
 def get_conversation():
@@ -77,21 +76,16 @@ def chat_bot():
         ]
     )
 
+    response_content = response.choices[0].message.content
     response_data = {
-        'response': response.choices[0].message.content,
+        'response': response_content,
         'query': query
     }
+    add_message("User: " + query)
+    add_message("Chatbot: " + response_content)
 
     return jsonify(response_data), 201
 
-@app.route('/api/aiwithprompt', methods=['POST'])
-def get_response(prompt):
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        prompt=prompt,
-        max_tokens=150
-    )
-    return response.choices.text.strip()
 
 @app.route('/api/ai', methods=['POST'])
 def call_openai():
@@ -100,7 +94,6 @@ def call_openai():
     parameters = data.get('parameters', {})
     ret = call_openai_internal(query, parameters)
     return ret
-
 
 def call_openai_internal(query, parameters):
     num_valid = int(parameters.get('num_valid', 1))
@@ -138,4 +131,12 @@ def call_openai_internal(query, parameters):
         'invalid_ids': invalid_ids
     }
 
+    add_message("User: " + query)
+    add_message("Agent: " + str(response_json))
     return jsonify(response_data), 201
+
+def add_message(message):
+    if 'conversation' not in session:
+        session['conversation'] = []
+    session['conversation'].append(message)
+    return "Message added!"
