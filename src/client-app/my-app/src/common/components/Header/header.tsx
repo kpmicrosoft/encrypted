@@ -20,14 +20,14 @@ export default function Header(): JSX.Element {
   ));
 
   return (
-    <header className="header inset-x-0 top-0 flex" color="primary">
+    <header className="header py-2 inset-x-0 top-0 flex" color="primary">
       <nav
-        className="items-center justify-between p-6 sm:px-8"
+        className="flex items-center justify-between px-6 sm:px-8 sm:gap-x-6 items-stretch"
         aria-label="Global"
       >
-        <div className="flex sm:gap-x-6 items-stretch">
-          <img src={`/img/hacker-face.png`} alt="Logo" className="logo" />
-          {menuItems}
+        <img src={`/img/hacker-face.png`} alt="Logo" className="logo" />
+        {menuItems}
+        <div className="flex flex-col justify-center">
           <a
             href="#"
             className="text-sm font-semibold leading-6 text-gray-9002 self-end"

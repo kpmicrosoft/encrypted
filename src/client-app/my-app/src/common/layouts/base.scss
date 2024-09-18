@@ -1,7 +1,6 @@
+$primary-color: #3f50b5;
 
-$primary-color: #3f50b5;+
-
-.base-page-container {
++.base-page-container {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -9,27 +8,7 @@ $primary-color: #3f50b5;+
     overflow: hidden;
 }
 
-
 .side-nav {
     background-color: $primary-color;
     border-radius: 3rem;
-}
-
-.message-feed {
-    border: 2px solid $primary-color;
-    border-radius: 2rem;
-}
-
-.message {
-    display: flex;
-    justify-content: start;
-    background-color: $primary-color;
-    border-radius: 1rem;
-    color: white;
-}
-
-.sos-message{
-    background-color: white;
-    border-radius: 0.5rem;
-    color: black;
 }

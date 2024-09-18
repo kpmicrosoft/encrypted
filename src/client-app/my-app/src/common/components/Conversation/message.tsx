@@ -1,3 +1,4 @@
+import "./conversation.scss"
 export interface IMessage {
   message: string | JSX.Element;
   user: UserType
@@ -25,7 +26,7 @@ export default function Message({ message, user }: IMessage): JSX.Element {
       <div className="flex-none">
         <img className="icon logo" src={getIcon()} alt={getAlt()}></img>
       </div>
-      <p >{message}</p>
+      <p className="m-2 message-text">{message}</p>
     </div>
   );
 }

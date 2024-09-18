@@ -1,5 +1,7 @@
 import { ISosMessage } from "../../services/planet-phishing-service";
 
+import "./sos-message.scss";
+
 interface Props {
     sosMessage: ISosMessage
 }

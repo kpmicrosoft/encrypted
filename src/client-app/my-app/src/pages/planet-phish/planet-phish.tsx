@@ -6,6 +6,7 @@ import { IMessage, UserType } from "../../common/components/Conversation/message
 import Conversation from "../../common/components/Conversation/conversation";
 
 export default function PlanetPhish() {
+  //TODO: remove the default messages and retrieve them from API when it works
   const [sosMessages, setSosMessages] = useState<ISosMessage[]>([
     {
       name: "Astronaut",
@@ -40,14 +41,15 @@ export default function PlanetPhish() {
   ]);
   useEffect(() => {
     (async () => {
-      setSosMessages(await GetSosMessages())
+      // TODO: call api for messages - right now it fails so we're using the defaults above
+      // setSosMessages(await GetSosMessages())
     })();
   });
   const sosMessageBoxes = sosMessages.map((message) =>
     <SosMessage sosMessage={message} />
   );
 
-  const messages: IMessage[] = [
+  let [chatMessages, setChatMessages] = useState<IMessage[]>([
     {
       message: "Help find our astronaut, but beware of fake distress calls.",
       user: UserType.Bot
@@ -56,11 +58,17 @@ export default function PlanetPhish() {
       user: UserType.Bot,
       message: <div>{sosMessageBoxes}</div>
     }
-  ]
+  ])
+
+  const onMessageSent = (message: string) => {
+    setChatMessages([...chatMessages, { message: message, user: UserType.User }]);
+
+    //TODO: call the backend to get the response
+  }
 
   return (
     <BaseLayout>
-      <Conversation messages={messages}></Conversation>
+      <Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
     </BaseLayout>
   );
 }

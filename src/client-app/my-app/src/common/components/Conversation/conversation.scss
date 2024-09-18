@@ -1,0 +1,28 @@
+$primary-color: #3f50b5;
+
+.conversation {
+    border: 2px solid $primary-color;
+    border-radius: 2rem;
+}
+
+.message-feed {
+    height: 56vh;
+    overflow-y: scroll;
+}
+
+.message {
+    display: flex;
+    justify-content: start;
+    background-color: $primary-color;
+    border-radius: 1rem;
+    color: white;
+}
+
+.message-text {
+    text-align: left;
+}
+
+.chat-input {
+    border: 3px solid black;
+    border-radius: 2px;
+}
