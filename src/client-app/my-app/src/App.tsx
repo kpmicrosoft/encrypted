@@ -15,6 +15,11 @@ function App() {
       errorElement: <ErrorPage />,
     },
     {
+      path: "Level2",
+      element: <Landing />,
+      errorElement: <ErrorPage />,
+    },
+    {
       path: "Dashboard",
       element: <Dashboard />
     },

@@ -12,12 +12,23 @@ export default function SpotThePhish() {
   useEffect(() => {
     (async () => {
       const response = await GetSosMessages();
-      setSosMessages(response.response)
-      setInvalidMessages(response.invalid_ids)
+      initialize(response.response, response.invalid_ids);
     })();
   }, []);
 
+  let [chatMessages, setChatMessages] = useState<IMessage[]>([])
 
+  const initialize = (sosMessages: ISosMessage[], invalidMessageIds: number[]) => {
+    setSosMessages(sosMessages)
+    setInvalidMessages(invalidMessageIds)
+    setChatMessages([
+      {
+        message: "Help find our astronaut, but beware of fake distress calls.",
+        user: UserType.Bot
+      }
+    ])
+  }
+  
   const onSosMessageClicked = (sosMessage: ISosMessage) => {
     if (invalidMessages.indexOf(sosMessage.id)) {
       setChatMessages([...chatMessages, { message: "This is a fake distress call. Try again!", user: UserType.Bot }]);
@@ -29,13 +40,6 @@ export default function SpotThePhish() {
   const sosMessageBoxes = sosMessages.map((message) =>
     <SosMessage onClick={onSosMessageClicked} sosMessage={message} />
   );
-
-  let [chatMessages, setChatMessages] = useState<IMessage[]>([
-    {
-      message: "Help find our astronaut, but beware of fake distress calls.",
-      user: UserType.Bot
-    }
-  ])
 
   const onMessageSent = (message: string) => {
     addMessageToFeed(message, UserType.User);

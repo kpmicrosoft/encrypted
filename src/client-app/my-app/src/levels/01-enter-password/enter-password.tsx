@@ -3,6 +3,7 @@ import EncryptedButton from "../../common/components/Button/button";
 import React from "react";
 import { Level_1_Password } from "../../common/services/Copilot/copilot-service";
 import TextBox from "../../common/components/TextBox/text-box";
+import { useNavigate } from 'react-router-dom';
 import Help from "../../common/components/Help/help";
 
 export default function LevelOne(): JSX.Element {
@@ -10,6 +11,7 @@ export default function LevelOne(): JSX.Element {
   const [aiMessage, setApiMessage] = React.useState("Please enter password");
   const [inputValue, setInputValue] = React.useState("");
   const [status, setStatus] = React.useState("");
+  const navigate = useNavigate();
 
   const style = {
     position: "absolute" as "absolute",
@@ -25,15 +27,12 @@ export default function LevelOne(): JSX.Element {
     pb: 3,
   };
 
-  function handleOpen(): void {
-    setOpen(true);
-  }
-
   function handleClose(event?: {}, reason?: string): void {
     if (reason === "backdropClick" || reason === "escapeKeyDown") {
       return;
     }
     setOpen(false);
+    navigate('/level2')
   }
 
   function sendPassword(): void {

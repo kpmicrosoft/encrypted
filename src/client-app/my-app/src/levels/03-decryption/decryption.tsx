@@ -3,31 +3,37 @@ import SosMessage from "../../common/components/SosMessage/sos-message";
 import { GetSosMessages, ISosMessage } from "../../common/services/planet-phishing-service";
 import { IMessage, UserType } from "../../common/components/Conversation/message";
 import Conversation from "../../common/components/Conversation/conversation";
+import { sendMessageToAi } from "../../common/services/Copilot/copilot-service";
 
 export default function Decryption() {
-  
-	let [chatMessages, setChatMessages] = useState<IMessage[]>([
-		{
-			message: "Help save the astronaut using decryption!",
-			user: UserType.Bot
-		},
-		{
-			message: "You can find the astronaut at ",
-      user: UserType.Bot,
-		},
+
+  let [chatMessages, setChatMessages] = useState<IMessage[]>([
     {
-			message: "It seems the coordinates are written in a language the FLUTRON planet uses. Use the following translation guide to find the location of the astronaut",
+      message: "Help save the astronaut using decryption!",
+      user: UserType.Bot
+    },
+    {
+      message: "You can find the astronaut at ",
+      user: UserType.Bot,
+    },
+    {
+      message: "It seems the coordinates are encrypted using Vigener cypher. Can you decrypt it?",
       user: UserType.Bot,
     }
-	])
+  ])
 
-	const onMessageSent = (message: string) => {
-		setChatMessages([...chatMessages, { message: message, user: UserType.User }]);
+  const addMessageToFeed = (message: string, user: UserType) => {
+    setChatMessages((prevMessages) => [...prevMessages, { message: message, user: user }]);
+  }
 
-		//TODO: call the backend to get the response
-	}
+  const onMessageSent = (message: string) => {
+    addMessageToFeed(message, UserType.User);
+    sendMessageToAi(message).then((response) => {
+      addMessageToFeed(response.data.response, UserType.Bot);
+    });
+  }
 
-	return (
-		<Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
-	);
+  return (
+    <Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
+  );
 }
