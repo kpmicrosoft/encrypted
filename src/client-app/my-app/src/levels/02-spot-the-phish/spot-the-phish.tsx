@@ -66,7 +66,7 @@ export default function SpotThePhish() {
   return (
     <div>
       <div>
-        {sosMessageBoxes}
+        {!success && sosMessageBoxes}
       </div>
       <Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
     </div>
