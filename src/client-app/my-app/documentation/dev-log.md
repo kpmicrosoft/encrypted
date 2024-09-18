@@ -19,6 +19,15 @@
     [ ] Text Input
 
 ### Spot the Phish
+    TODO:
+
+        [X] Make the page
+
+        [X] Setup the conversation component
+
+        [X] Make component for the SOS message itself
+
+        [ ] Link to API
 
 ### Identifying Deepfakes and Misinformation
 

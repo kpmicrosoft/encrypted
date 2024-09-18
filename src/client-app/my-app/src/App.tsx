@@ -5,6 +5,7 @@ import Profile from './pages/profile/profile';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './pages/error/error';
 import { createTheme, ThemeProvider } from '@mui/material';
+import PlanetPhish from './pages/planet-phish/planet-phish';
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +21,10 @@ function App() {
     {
       path: "Profile",
       element: <Profile />
+    },
+    {
+      path: "Level2",
+      element: <PlanetPhish />
     }
   ])
 
