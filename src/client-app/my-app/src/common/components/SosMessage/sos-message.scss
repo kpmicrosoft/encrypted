@@ -1,9 +1,9 @@
-$primary-color: #3f50b5;
+@import "../../styles/base.scss";
 
 .sos-message {
     background-color: $primary-color;
     border-radius: 0.5rem;
-    color: white;
+    color: $secondary-color;
     cursor: pointer;
     width: 32rem;
 }

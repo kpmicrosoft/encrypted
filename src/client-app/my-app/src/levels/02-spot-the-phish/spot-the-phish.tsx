@@ -36,7 +36,6 @@ export default function SpotThePhish() {
     sosMessages: ISosMessage[],
     invalidMessageIds: number[]
   ) => {
-    console.log("init");
     setSosMessages(shuffleArray(sosMessages));
     setInvalidMessages(invalidMessageIds);
     setChatMessages([
@@ -78,7 +77,7 @@ export default function SpotThePhish() {
     }
   };
 
-  const sosMessageBoxes = sosMessages.map((message) => (
+  const sosMessageBoxes = sosMessages?.map((message) => (
     <SosMessage onClick={onSosMessageClicked} sosMessage={message} />
   ));
 
