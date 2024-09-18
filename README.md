@@ -18,7 +18,8 @@ python3 api.py
 ## Run UI
 
 1. cd src\client-app\my-app
-2. npm start
+2. npm install 
+3. npm start
 
 ## Call the API
 
