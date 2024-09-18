@@ -111,13 +111,9 @@ def call_openai_internal(query):
     except SyntaxError:
         return jsonify({"error": "Failed to generate valid JSON from response"}), 400
 
-    response_data = {
-        'response': response_json
-    }
-
     add_message("User: " + query)
     add_message("Agent: " + str(response_json))
-    return jsonify(response_data), 201
+    return jsonify(response_json), 201
 
 
 def add_message(message):

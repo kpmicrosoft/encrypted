@@ -38,16 +38,6 @@ def encrypt_coordinates(x, y):
     y_encrypted = (y_digits[0] + key_numbers[2]) % 10 * 10 + (y_digits[1] + key_numbers[3]) % 10
     return x_encrypted, y_encrypted
 
-27 - 2 , 7
-86 - 8, 6
-
-key_numbers = [7, 11, 12, 1, 24, 25]
-2 +12 %10
-40
-7+11 = 18 % 10 = 8
-
-
-
 @app.route('/api/level3/decrypt', methods=['POST'])
 def decrypt():
     data = request.get_json()
