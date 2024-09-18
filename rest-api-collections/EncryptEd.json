@@ -7,7 +7,7 @@
       "name": "All_chatbot",
       "seq": 8,
       "request": {
-        "url": "{{host}}:{{port}}/api/5/chat_bot",
+        "url": "{{host}}:{{port}}/api/chat_bot",
         "method": "POST",
         "headers": [],
         "params": [],

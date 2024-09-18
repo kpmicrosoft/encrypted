@@ -39,7 +39,7 @@ def help(level):
     return jsonify(data)
 
 
-@app.route('/api/<level>/chat_bot', methods=['POST'])
+@app.route('/api/chat_bot', methods=['POST'])
 def chat_bot(level):
     data = request.get_json()
     query = data.get('query')
