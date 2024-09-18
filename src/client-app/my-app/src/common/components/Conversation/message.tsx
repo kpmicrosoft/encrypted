@@ -6,19 +6,35 @@ export interface IMessage {
 
 export enum UserType {
   User,
-  Bot
+  Bot,
+  Astronaut
 }
 
 const userImage = `/img/hacker man.png`;
 const botImage = `/img/hacker-face.png`;
+const astronautImage = `/img/hacker-astronaut.jpeg`;
 
 export default function Message({ message, user }: IMessage): JSX.Element {
   function getIcon() {
-    return user === UserType.User ? userImage : botImage;
+    switch (user) {
+      case UserType.User:
+        return userImage;
+      case UserType.Bot:
+        return botImage;
+      case UserType.Astronaut:
+        return astronautImage;
+    }
   }
 
   function getAlt() {
-    return user === UserType.User ? "User" : "Bot";
+    switch (user) {
+      case UserType.User:
+        return "User";
+      case UserType.Bot:
+        return "Bot";
+      case UserType.Astronaut:
+        return "Astronaut";
+    }
   }
 
   return (

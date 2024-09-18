@@ -11,6 +11,7 @@ export default function LevelOne(): JSX.Element {
   const [aiMessage, setApiMessage] = React.useState("Please enter password");
   const [inputValue, setInputValue] = React.useState("");
   const [status, setStatus] = React.useState("");
+  const [attempts, setAttempts] = React.useState(0);
   const navigate = useNavigate();
 
   const style = {
@@ -39,6 +40,9 @@ export default function LevelOne(): JSX.Element {
     Level_1_Password(inputValue).then((response) => {
       setApiMessage(response.data.detail);
       setStatus(response.data.status);
+      if(status !== "Success") {
+        setAttempts(attempts + 1);
+      }
     });
   }
 
@@ -61,9 +65,10 @@ export default function LevelOne(): JSX.Element {
       >
         <Box sx={{ ...style, width: 400 }}>
           <div className="">
+            <h2>Please enter {attempts < 3 ? "the password" : <b>the password</b>}</h2>
             <input
               type="text"
-              placeholder="Please enter the password"
+              placeholder="********"
               onChange={(e) => setInputValue(e.target.value)}
             />
             {status === "Success" ? 
@@ -72,7 +77,7 @@ export default function LevelOne(): JSX.Element {
             {status === "Success" && <TextBox text={aiMessage} />}
             {status === "Denied" && (
               <Help>
-                <TextBox text={aiMessage} />
+                <TextBox text={attempts < 3 ? "Try again" : "Here's a hint"} />
               </Help>
             )}
           </div>

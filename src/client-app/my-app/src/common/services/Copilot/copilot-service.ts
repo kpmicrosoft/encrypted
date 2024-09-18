@@ -42,26 +42,18 @@ export async function Level_1_Password(password: string): Promise<any> {
   return axios.request(options);
 }
 
-export function Level_2_SOS() {
-  let config: Configuration = getConfig();
-
-  return "GPT-4 called";
-}
-
 export function Level_3_Encryption_Validation() {
   let config: Configuration = getConfig();
+  let url = `http://${config.url}:${config.port}/api/level3/coordinates`;
 
-  return "GPT-4 called";
+  const options = {
+    method: "GET",
+    url: url,
+    headers: {
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    }
+  };
+
+  return axios.request(options);
 }
-
-export function Copilot_Help() {
-  let config: Configuration = getConfig();
-
-  return "GPT-4 called";
-}
-
-// export function Level4_Password() {
-//     let config: Configuration = getConfig();
-
-//     return "GPT-4 called";
-// }
