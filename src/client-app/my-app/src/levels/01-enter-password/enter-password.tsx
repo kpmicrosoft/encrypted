@@ -6,7 +6,7 @@ import TextBox from "../../common/components/TextBox/text-box";
 import Help from "../../common/components/Help/help";
 
 export default function LevelOne(): JSX.Element {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [aiMessage, setApiMessage] = React.useState("Please enter password");
   const [inputValue, setInputValue] = React.useState("");
   const [status, setStatus] = React.useState("");
@@ -29,7 +29,10 @@ export default function LevelOne(): JSX.Element {
     setOpen(true);
   }
 
-  function handleClose(): void {
+  function handleClose(event?: {}, reason?: string): void {
+    if (reason === "backdropClick" || reason === "escapeKeyDown") {
+      return;
+    }
     setOpen(false);
   }
 
@@ -42,28 +45,40 @@ export default function LevelOne(): JSX.Element {
 
   return (
     <div>
-      <EncryptedButton onClick={handleOpen} text="Enter password" />
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
+        slotProps={{
+          backdrop:
+          {
+            style: {
+              backdropFilter: 'blur(10px)', // Increase the blur value here
+              backgroundColor: 'rgba(0, 0, 0, 0.5)', // Optional: Adjust the background color and opacity
+            },
+          }
+        }}
       >
         <Box sx={{ ...style, width: 400 }}>
-          <TextField
-            label="Please enter the password"
-            variant="standard"
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <EncryptedButton text="Submit" onClick={sendPassword} />
-          {status === "Success" && <TextBox text={aiMessage} />}
-          {status === "Denied" && (
-            <Help>
-              <TextBox text={aiMessage} />
-            </Help>
-          )}
+          <div className="">
+            <input
+              type="text"
+              placeholder="Please enter the password"
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            {status === "Success" ? 
+              <EncryptedButton text="Start your journey!" onClick={handleClose} /> : 
+              <EncryptedButton text="Submit" onClick={sendPassword} />}
+            {status === "Success" && <TextBox text={aiMessage} />}
+            {status === "Denied" && (
+              <Help>
+                <TextBox text={aiMessage} />
+              </Help>
+            )}
+          </div>
         </Box>
       </Modal>
-    </div>
+    </div >
   );
 }
