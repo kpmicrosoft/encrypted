@@ -32,11 +32,11 @@ export default function Decryption() {
 
   let [chatMessages, setChatMessages] = useState<IMessage[]>([
     {
-      message: "We received the astronaut's coordinates!",
+      message: "Welcome to Level3 this level is called: Decrypt IT",
       user: UserType.Bot
     },
     {
-      message: "Welcome to Level3 this level is called: Decrypt IT",
+      message: "We received the astronaut's coordinates!",
       user: UserType.Bot
     },
     {
