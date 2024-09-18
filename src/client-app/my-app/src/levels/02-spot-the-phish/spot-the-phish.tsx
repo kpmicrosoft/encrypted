@@ -41,6 +41,10 @@ export default function SpotThePhish() {
     setInvalidMessages(invalidMessageIds);
     setChatMessages([
       {
+        message: "Welcome to Level 2 this level is called: Spot the Phish",
+        user: UserType.Bot,
+      },
+      {
         message: "Help find our astronaut, but beware of fake distress calls.",
         user: UserType.Bot,
       },
