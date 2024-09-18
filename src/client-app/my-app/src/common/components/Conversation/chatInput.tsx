@@ -26,7 +26,7 @@ export default function ChatInput({ onSend, isAiThinking }: Props): JSX.Element 
   return (
     <div className="items-stretch flex m-3">
       <input
-        className="chat-input p-3 flex-1"
+        className="chat-input p-3"
         type="text"
         placeholder="Type a message..."
         value={inputValue}

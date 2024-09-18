@@ -1,3 +1,5 @@
+@import "../../common/styles/base.scss";
+
 .sos-messages{
     display: flex;
     justify-content: center;
@@ -14,7 +16,7 @@
     align-items: center;
     flex-wrap: wrap;
     height: 100%;
-    width: 200rem;
-    background-color: #f5f5f5;
+    min-width: 50rem;
+    background-color: $secondary-color;
     padding: 20px;
 }

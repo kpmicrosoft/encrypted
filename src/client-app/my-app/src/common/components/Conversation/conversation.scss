@@ -1,13 +1,14 @@
-$primary-color: #3f50b5;
+@import "../../styles/base.scss";
 
 .conversation {
     border: 2px solid $primary-color;
     border-radius: 2rem;
+    width: 100%;
 }
 
 .message-feed {
     overflow-y: scroll;
-    height: 70vh;
+    height: 50vh;
 }
 
 .message {
@@ -15,7 +16,7 @@ $primary-color: #3f50b5;
     justify-content: start;
     background-color: $primary-color;
     border-radius: 1rem;
-    color: white;
+    color: $secondary-color;
 }
 
 .message-text {

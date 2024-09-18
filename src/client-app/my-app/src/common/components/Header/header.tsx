@@ -16,7 +16,7 @@ export default function Header(): JSX.Element {
   ];
 
   const menuItems = navButtons.map((button) => (
-    <EncryptedButton text={button.text} route={button.route} />
+    <EncryptedButton text={button.text} route={button.route} key={button.text}/>
   ));
 
   return (
@@ -25,7 +25,7 @@ export default function Header(): JSX.Element {
         className="flex items-center justify-between px-6 sm:px-8 sm:gap-x-6 items-stretch"
         aria-label="Global"
       >
-        <img src={`/img/hacker-face.png`} alt="Logo" className="logo" />
+        <img src={`/img/encrypted.png`} alt="Logo" className="logo" />
         {menuItems}
         <div className="flex flex-col justify-center">
           <a

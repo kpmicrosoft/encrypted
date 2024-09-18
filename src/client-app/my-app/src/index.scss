@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../src/common/styles/base.scss";
+
 @font-face {
     font-family: 'Silkscreen';
     src: local('MyFont'), url(../public/fonts/Silkscreen-Regular.ttf) format('truetype');
@@ -18,5 +20,5 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.7;
-    background-color: #3f50b5;
+    background-color: $primary-color;
 }

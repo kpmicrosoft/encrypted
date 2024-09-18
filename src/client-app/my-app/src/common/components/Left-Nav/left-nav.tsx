@@ -30,6 +30,7 @@ export default function LeftNav(): JSX.Element {
         {leftNavButtons.map((button) => (
           <LeftNavButton
             text={button.text}
+            key={button.text}
             onClick={button.onClick}
             route={button.route}
             icon={button.icon}

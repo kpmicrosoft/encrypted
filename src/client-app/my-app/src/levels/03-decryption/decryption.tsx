@@ -5,6 +5,7 @@ import { ClearChatSession, Level_3_Encryption_Validation, sendMessageToAi } from
 import EncryptedButton from "../../common/components/Button/button";
 
 import "./decryption.scss";
+import { CircularProgress } from "@mui/material";
 
 interface ICoordinates {
   x: number,
@@ -15,6 +16,8 @@ export default function Decryption() {
 
   let [encryptedCoordinates, setEncryptedCoordinates] = useState<ICoordinates>({ x: 0, y: 0 });
   let [decryptedCoordinates, setDecryptedCoordinates] = useState<ICoordinates>({ x: 0, y: 0 });
+  let [xValue, setXValue] = useState<string>("");
+  let [yValue, setYValue] = useState<string>("");
 
   let [success, setSuccess] = useState<boolean>(false);
   let [initialized, setInitialized] = useState<boolean>(false);
@@ -45,19 +48,44 @@ export default function Decryption() {
     }
   ])
 
-  const addMessageToFeed = (message: string, user: UserType) => {
-    setChatMessages((prevMessages) => [...prevMessages, { message: message, user: user }]);
-  }
+  const addMessageToFeed = (message: string | JSX.Element, user: UserType) => {
+    setChatMessages((prevMessages) => [
+      ...prevMessages,
+      { message: message, user: user },
+    ]);
+  };
+
+    const popMessageToFeed = () => {
+      setChatMessages((prevMessages) => [
+        ...prevMessages.slice(0, prevMessages.length - 1),
+      ]);
+    };
 
   const onMessageSent = (message: string) => {
     addMessageToFeed(message, UserType.User);
+    addMessageToFeed(<CircularProgress color="secondary" />, UserType.Bot);
     sendMessageToAi(message).then((response) => {
+      popMessageToFeed();
       addMessageToFeed(response.data.response, UserType.Bot);
     });
   }
 
+  const launch = () => {
+    console.log(xValue == decryptedCoordinates.x + "");
+    if (xValue == decryptedCoordinates.x + "") {
+      if(xValue == decryptedCoordinates.x + ""){
+          addMessageToFeed(
+            <CircularProgress color="secondary" />,
+            UserType.Bot
+          );
+        return;
+      }
+      return;
+    }
+  }
+
   return (
-    <div>
+    <div className="">
       <Message
         user={UserType.Astronaut}
         message={`My coordinates are ##X:${encryptedCoordinates.x}## and ##Y:${encryptedCoordinates.y}##. I used the standard encryption method for this.`}
@@ -65,10 +93,18 @@ export default function Decryption() {
       <div className="my-2">
         <h3>ENTER DESTINATION COORDINATES</h3>
         <div className="my-2">
-          <input className="coordinate" placeholder="X"></input>
-          <input className="coordinate" placeholder="Y"></input>
+          <input
+            className="coordinate"
+            placeholder="X"
+            onChange={(e) => setXValue(e.target.value)}
+          ></input>
+          <input
+            className="coordinate"
+            placeholder="Y"
+            onChange={(e) => setYValue(e.target.value)}
+          ></input>
         </div>
-        <EncryptedButton text="LAUNCH" />
+        <EncryptedButton text="LAUNCH" onClick={launch}/>
       </div>
       <Conversation
         messages={chatMessages}
