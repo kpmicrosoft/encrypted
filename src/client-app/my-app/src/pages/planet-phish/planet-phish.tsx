@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import TextBox from "../../common/components/TextBox/text-box";
 import BaseLayout from "../../common/layouts/base";
 import SosMessage from "../../common/components/SosMessage/sos-message";
 import { GetSosMessages, ISosMessage } from "../../common/services/planet-phishing-service";
-import Message, { IMessage, UserType } from "../../common/components/Conversation/message";
+import { IMessage, UserType } from "../../common/components/Conversation/message";
 import Conversation from "../../common/components/Conversation/conversation";
 
 export default function PlanetPhish() {

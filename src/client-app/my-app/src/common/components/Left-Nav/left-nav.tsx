@@ -1,5 +1,4 @@
 import LeftNavButton from "./left-nav-button";
-import LeftNavButtonProps from "./left-nav-button";
 import LeftNavIcon from "./left-nav-icon";
 
 export interface LeftNavButtonProps {
