@@ -57,6 +57,15 @@ def chat_bot(level):
 
     return jsonify(response_data), 201
 
+@app.route('/api/aiwithprompt', methods=['POST'])
+def get_response(prompt):
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        prompt=prompt,
+        max_tokens=150
+    )
+    return response.choices.text.strip()
+
 @app.route('/api/ai', methods=['POST'])
 def call_openai():
     data = request.get_json()
