@@ -40,7 +40,7 @@ def help(level):
 
 
 @app.route('/api/chat_bot', methods=['POST'])
-def chat_bot(level):
+def chat_bot():
     data = request.get_json()
     query = data.get('query')
     response = client.chat.completions.create(
