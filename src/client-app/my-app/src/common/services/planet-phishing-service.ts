@@ -3,21 +3,13 @@ import { Configuration, getConfig } from "../../configuration";
 let config: Configuration = getConfig();
 
 export interface ISosMessage{
-    color: string;
-    description: string;
     id: number;
     message: string;
-    name: string;
     valid: boolean;
+    reason: string;
 }
 export interface ISosResponse {
     invalid_ids: number[];
-    parameters: {
-        num_responses: number;
-        num_valid: number;
-        values: string;
-    };
-    query: string;
     response: ISosMessage[];
 }
 export async function GetSosMessages() : Promise<ISosResponse>{
