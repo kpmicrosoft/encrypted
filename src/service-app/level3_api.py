@@ -4,15 +4,14 @@ from rest_api import app
 from common_api import get_response
 
 from rest_api import app
-@app.route('/api/level3/encryption-method', methods=['GET'])
-def encryption_method():
-    return jsonify({"method": "Vigenère"})
 
 
+@app.route('/api/level3/hint', methods=['GET'])
 def provide_hint():
     return jsonify({"Hint": "The key 'GALAXY' is used in a Vigenère cipher, where each letter shifts the corresponding digit."})
 
 
+@app.route('/api/level3/help', methods=['GET'])
 def explain_cipher():
     return """
     The Vigenère cipher works as follows:
@@ -27,66 +26,73 @@ def explain_cipher():
     4. Shift each digit of the coordinates by the corresponding number in the key.
     """
 
-
 def generate_random_coordinates():
     x = random.randint(10, 99)
     y = random.randint(10, 99)
+
     return x, y
 
-
 def encrypt_coordinates(x, y):
-    key_numbers = [7, 1, 12, 1, 24, 25]
-    x_encrypted = (x // 10 + key_numbers) % 10 * 10 + (x % 10 + key_numbers) % 10
-    y_encrypted = (y // 10 + key_numbers) % 10 * 10 + (y % 10 + key_numbers) % 10
-    return f"{x_encrypted}, {y_encrypted}"
+    key_numbers = keys()
+    x_digits = [x // 10, x % 10]
+    y_digits = [y // 10, y % 10]
 
+    x_encrypted = (x_digits[0] + key_numbers[0]) % 10 * 10 + (x_digits[1] + key_numbers[1]) % 10
+    y_encrypted = (y_digits[0] + key_numbers[2]) % 10 * 10 + (y_digits[1] + key_numbers[3]) % 10
+    return x_encrypted, y_encrypted
+
+
+@app.route('/api/level3/decrypt', methods=['POST'])
+def decrypt():
+    data = request.get_json()
+    x = data.get("x")
+    y = data.get("y")
+    x_decrypted, y_decrypted = decrypt_coordinates(x, y)
+    coordinates = {
+        "x": x_decrypted,
+        "y": y_decrypted,
+    }
+    return jsonify(coordinates), 200
 
 def decrypt_coordinates(x, y):
-    key_numbers = [7, 1, 12, 1, 24, 25]
-    x_decrypted = ((x // 10 - key_numbers) % 10) * 10 + ((x % 10 - key_numbers) % 10)
-    y_decrypted = ((y // 10 - key_numbers) % 10) * 10 + ((y % 10 - key_numbers) % 10)
+    key_numbers = keys()
+    x_digits = [x // 10, x % 10]
+    y_digits = [y // 10, y % 10]
+
+    x_decrypted = ((x_digits[0] - key_numbers[0]) % 10) * 10 + ((x_digits[1] - key_numbers[1]) % 10)
+    y_decrypted = ((y_digits[0] - key_numbers[2]) % 10) * 10 + ((y_digits[1] - key_numbers[3]) % 10)
     return x_decrypted, y_decrypted
 
+
+def keys():
+    key_numbers = [7, 1, 12, 1, 24, 25]
+    return key_numbers
+
+
+@app.route('/api/level3/coordinates', methods=['GET'])
+def coordinates():
+    x, y = generate_random_coordinates()
+    x_encrypted, y_encrypted = encrypt_coordinates(x, y)
+    encrypted_coordinates = {
+        "x": x_encrypted,
+        "y": y_encrypted,
+        "original": {
+            "x": x,
+            "y": y
+        }
+    }
+    return jsonify(encrypted_coordinates)
 
 @app.route('/api/level3/validate', methods=['POST'])
 def validate():
     data = request.get_json()
-    attempts = 0
-    key = "GALAXY"
-    x, y = generate_random_coordinates()
-    encrypted_message = f"My location coordinates are: {encrypt_coordinates(x, y)}."
-    print(f"\nEncrypted Message: {encrypted_message}")
+    x_encrypted = data.get("x")
+    y_encrypted = data.get("y")
+    x = data["original"]["x"]
+    y = data["original"]["y"]
+    x_decrypted, y_decrypted = decrypt_coordinates(x_encrypted, y_encrypted)
 
-
-    while attempts < 10:
-        user_input = data.get("Ask a question about the cipher or enter the decrypted coordinates: ","")
-        
-        if user_input.lower() == 'hint':
-            print(provide_hint())
-            continue
-        
-        if user_input.lower() == 'explain':
-            print(explain_cipher())
-            continue
-        
-        prompt = f"Answer the player's question: {user_input} for the encrypted message {encrypted_message} using the Vigenère cipher with the key {key}."
-        result = get_response(prompt)
-
-        if "correct" in result.lower():
-            print("\nCongratulations! You have decrypted the coordinates and found the lost astronaut. Level Passed!")
-            break
-        else:
-            print("\nIncorrect coordinates. Try again or ask for a hint!")
-            attempts += 1
-    
-    if attempts >= 10:
-        print("\nYou've reached the maximum number of attempts. The decrypted coordinates are 33, 19.")
-
-
-@app.route('/api/level3/encrypted-message', methods=['POST'])
-def encrypted_message():
-    data = request.get_json()
-    encryption_method = data.get('encryption_method')
-
-    encrypted_message = f"This message is encrypted using {encryption_method}"
-    return jsonify({"encrypted_message": encrypted_message})
+    if x == x_decrypted and y == y_decrypted:
+        return jsonify({"status": "Success", "detail": "Coordinates are correct!"}), 200
+    else:
+        return jsonify({"status": "Failed", "detail": "Coordinates are incorrect!"}), 400
