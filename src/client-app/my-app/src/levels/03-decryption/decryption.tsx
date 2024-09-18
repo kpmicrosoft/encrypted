@@ -36,6 +36,10 @@ export default function Decryption() {
       user: UserType.Bot
     },
     {
+      message: "Welcome to Level3 this level is called: Decrypt IT",
+      user: UserType.Bot
+    },
+    {
       message: `The standard encryption method is using the Vigenere Cipher with the "GALAXY" key. My decryption systems are malfunctioning. Can you do it manually?`,
       user: UserType.Bot,
     }
