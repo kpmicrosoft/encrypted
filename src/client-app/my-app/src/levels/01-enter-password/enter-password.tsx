@@ -65,7 +65,7 @@ export default function LevelOne(): JSX.Element {
       >
         <Box sx={{ ...style, width: 400 }}>
           <div className="">
-            <h2>Please enter {attempts < 3 ? "the password" : <b>the password</b>}</h2>
+            <h2>Please enter {attempts < 3 ? "the password" : <u><b>the password</b></u>}</h2>
             <input
               type="text"
               placeholder="********"
