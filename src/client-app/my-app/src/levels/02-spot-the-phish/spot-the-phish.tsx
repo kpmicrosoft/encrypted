@@ -4,6 +4,7 @@ import { GetSosMessages, ISosMessage } from "../../common/services/planet-phishi
 import { IMessage, UserType } from "../../common/components/Conversation/message";
 import Conversation from "../../common/components/Conversation/conversation";
 import { sendMessageToAi } from "../../common/services/Copilot/copilot-service";
+import { shuffleArray } from "../../common/services/shuffler-service";
 
 export default function SpotThePhish() {
   //TODO: remove the default messages and retrieve them from API when it works
@@ -19,7 +20,7 @@ export default function SpotThePhish() {
   let [chatMessages, setChatMessages] = useState<IMessage[]>([])
 
   const initialize = (sosMessages: ISosMessage[], invalidMessageIds: number[]) => {
-    setSosMessages(sosMessages)
+    setSosMessages(shuffleArray(sosMessages))
     setInvalidMessages(invalidMessageIds)
     setChatMessages([
       {
