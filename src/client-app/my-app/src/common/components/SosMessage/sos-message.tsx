@@ -11,7 +11,6 @@ export default function SosMessage({sosMessage, onClick}: Props): JSX.Element {
     return (
         <div onClick={() => onClick(sosMessage)} className="sos-message m-1 p-2">
             <h3>MESSAGE: {sosMessage.message}</h3>
-            <h3>DESCRIPTION: {sosMessage.description}</h3>
         </div>
     );
 }
