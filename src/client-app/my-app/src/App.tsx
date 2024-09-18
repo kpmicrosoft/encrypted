@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './pages/error/error';
 import { createTheme, ThemeProvider } from '@mui/material';
 import PlanetPhish from './pages/planet-phish/planet-phish';
+import Decrypt from './pages/decrypt/decrypt';
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,10 @@ function App() {
     {
       path: "Level2",
       element: <PlanetPhish />
+    },
+    {
+      path: "Level3",
+      element: <Decrypt />
     }
   ])
 
