@@ -57,3 +57,19 @@ export function Level_3_Encryption_Validation() {
 
   return axios.request(options);
 }
+
+export function ClearChatSession() {
+  let config: Configuration = getConfig();
+  let url = `http://${config.url}:${config.port}/api/conversation`;
+
+  const options = {
+    method: "DELETE",
+    url: url,
+    headers: {
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    }
+  };
+
+  return axios.request(options);
+}

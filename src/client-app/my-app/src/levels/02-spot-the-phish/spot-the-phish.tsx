@@ -3,7 +3,7 @@ import SosMessage from "../../common/components/SosMessage/sos-message";
 import { GetSosMessages, ISosMessage } from "../../common/services/planet-phishing-service";
 import { IMessage, UserType } from "../../common/components/Conversation/message";
 import Conversation from "../../common/components/Conversation/conversation";
-import { sendMessageToAi } from "../../common/services/Copilot/copilot-service";
+import { ClearChatSession, sendMessageToAi } from "../../common/services/Copilot/copilot-service";
 import { shuffleArray } from "../../common/services/shuffler-service";
 import EncryptedButton from "../../common/components/Button/button";
 
@@ -13,10 +13,11 @@ export default function SpotThePhish() {
   const [invalidMessages, setInvalidMessages] = useState<number[]>([]);
   const [success, setSuccess] = useState<boolean>(false);
   useEffect(() => {
-    (async () => {
-      const response = await GetSosMessages();
-      initialize(response.response, response.invalid_ids);
-    })();
+    ClearChatSession()
+      .then(() => GetSosMessages())
+      .then((response) => {
+        initialize(response.response, response.invalid_ids);
+      });
   }, []);
 
   let [chatMessages, setChatMessages] = useState<IMessage[]>([])
@@ -41,9 +42,9 @@ export default function SpotThePhish() {
       addMessageToFeed("This is a real distress call. Well done!", UserType.Bot);
       addMessageToFeed(
         <a
-        href={"/level3"}
-        className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-      >Click here to continue our adventure!</a>
+          href={"/level3"}
+          className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+        >Click here to continue our adventure!</a>
         , UserType.Bot);
     }
   }

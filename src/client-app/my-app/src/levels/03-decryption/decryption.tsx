@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Message, { IMessage, UserType } from "../../common/components/Conversation/message";
 import Conversation from "../../common/components/Conversation/conversation";
-import { Level_3_Encryption_Validation, sendMessageToAi } from "../../common/services/Copilot/copilot-service";
+import { ClearChatSession, Level_3_Encryption_Validation, sendMessageToAi } from "../../common/services/Copilot/copilot-service";
 import EncryptedButton from "../../common/components/Button/button";
 
 import "./decryption.scss";
@@ -21,11 +21,13 @@ export default function Decryption() {
 
   useEffect(() => {
     if (initialized) { return }
-    Level_3_Encryption_Validation().then((response) => {
-      setEncryptedCoordinates(response.data);
-      setDecryptedCoordinates(response.data.original);
-      setInitialized(true);
-    })
+    ClearChatSession()
+      .then(Level_3_Encryption_Validation)
+      .then((response) => {
+        setEncryptedCoordinates(response.data);
+        setDecryptedCoordinates(response.data.original);
+        setInitialized(true);
+      })
   }, []);
 
   let [chatMessages, setChatMessages] = useState<IMessage[]>([
