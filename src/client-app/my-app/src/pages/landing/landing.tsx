@@ -1,6 +1,6 @@
 import TextBox from "../../common/components/TextBox/text-box";
 import BaseLayout from "../../common/layouts/base";
-import LevelOne from "../../levels/01-Enter-Password/enter-password";
+import LevelOne from "../../levels/01-enter-password/enter-password";
 
 import "./landing.scss";
 

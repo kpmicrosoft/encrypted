@@ -27,7 +27,7 @@ export default function LeftNav(): JSX.Element {
   return (
     <ul className="font-medium">
       <li>
-        <LeftNavIcon icon="img/orange-hacker.png" name="Player 1" />
+        <LeftNavIcon icon="/img/orange-hacker.png" name="Player 1" />
         {leftNavButtons.map((button) => (
           <LeftNavButton
             text={button.text}

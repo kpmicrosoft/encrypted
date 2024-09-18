@@ -26,7 +26,7 @@ export default function Header(): JSX.Element {
         aria-label="Global"
       >
         <div className="flex sm:gap-x-6 items-stretch">
-          <img src={`img/hacker-face.png`} alt="Logo" className="logo" />
+          <img src={`/img/hacker-face.png`} alt="Logo" className="logo" />
           {menuItems}
           <a
             href="#"
