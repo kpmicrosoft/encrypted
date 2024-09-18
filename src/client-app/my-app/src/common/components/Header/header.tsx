@@ -30,7 +30,7 @@ export default function Header(): JSX.Element {
         <div className="flex flex-col justify-center">
           <a
             href="#"
-            className="text-sm font-semibold leading-6 text-gray-9002 self-end"
+            className="login-button text-sm font-semibold leading-6 self-end"
           >
             Log in <span aria-hidden="true">&rarr;</span>
           </a>

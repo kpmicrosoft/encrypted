@@ -11,7 +11,7 @@ interface Props {
 
 export default function EncryptedButton({ text, variant, onClick, route }: Props): JSX.Element {
   return (
-    <Button className="button" variant={variant ?? "contained"} onClick={onClick} href={route}>
+    <Button className="button" color="secondary" variant={variant ?? "contained"} onClick={onClick} href={route}>
       {text}
     </Button>
   )

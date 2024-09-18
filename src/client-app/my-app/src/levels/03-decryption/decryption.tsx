@@ -1,21 +1,33 @@
 import { useEffect, useState } from "react";
-import Message, { IMessage, UserType } from "../../common/components/Conversation/message";
+import Message, {
+  IMessage,
+  UserType,
+} from "../../common/components/Conversation/message";
 import Conversation from "../../common/components/Conversation/conversation";
-import { ClearChatSession, Level_3_Encryption_Validation, sendMessageToAi } from "../../common/services/Copilot/copilot-service";
+import {
+  ClearChatSession,
+  Level_3_Encryption_Validation,
+  sendMessageToAi,
+} from "../../common/services/Copilot/copilot-service";
 import EncryptedButton from "../../common/components/Button/button";
 
 import "./decryption.scss";
 import { CircularProgress } from "@mui/material";
 
 interface ICoordinates {
-  x: number,
-  y: number
+  x: number;
+  y: number;
 }
 
 export default function Decryption() {
-
-  let [encryptedCoordinates, setEncryptedCoordinates] = useState<ICoordinates>({ x: 0, y: 0 });
-  let [decryptedCoordinates, setDecryptedCoordinates] = useState<ICoordinates>({ x: 0, y: 0 });
+  let [encryptedCoordinates, setEncryptedCoordinates] = useState<ICoordinates>({
+    x: 0,
+    y: 0,
+  });
+  let [decryptedCoordinates, setDecryptedCoordinates] = useState<ICoordinates>({
+    x: 0,
+    y: 0,
+  });
   let [xValue, setXValue] = useState<string>("");
   let [yValue, setYValue] = useState<string>("");
 
@@ -23,30 +35,32 @@ export default function Decryption() {
   let [initialized, setInitialized] = useState<boolean>(false);
 
   useEffect(() => {
-    if (initialized) { return }
+    if (initialized) {
+      return;
+    }
     ClearChatSession()
       .then(Level_3_Encryption_Validation)
       .then((response) => {
         setEncryptedCoordinates(response.data);
         setDecryptedCoordinates(response.data.original);
         setInitialized(true);
-      })
+      });
   }, []);
 
   let [chatMessages, setChatMessages] = useState<IMessage[]>([
     {
       message: "Welcome to Level3 this level is called: Decrypt IT",
-      user: UserType.Bot
+      user: UserType.Bot,
     },
     {
       message: "We received the astronaut's coordinates!",
-      user: UserType.Bot
+      user: UserType.Bot,
     },
     {
       message: `The standard encryption method is using the Vigenere Cipher with the "GALAXY" key. My decryption systems are malfunctioning. Can you do it manually?`,
       user: UserType.Bot,
-    }
-  ])
+    },
+  ]);
 
   const addMessageToFeed = (message: string | JSX.Element, user: UserType) => {
     setChatMessages((prevMessages) => [
@@ -55,11 +69,11 @@ export default function Decryption() {
     ]);
   };
 
-    const popMessageToFeed = () => {
-      setChatMessages((prevMessages) => [
-        ...prevMessages.slice(0, prevMessages.length - 1),
-      ]);
-    };
+  const popMessageToFeed = () => {
+    setChatMessages((prevMessages) => [
+      ...prevMessages.slice(0, prevMessages.length - 1),
+    ]);
+  };
 
   const onMessageSent = (message: string) => {
     addMessageToFeed(message, UserType.User);
@@ -68,49 +82,64 @@ export default function Decryption() {
       popMessageToFeed();
       addMessageToFeed(response.data.response, UserType.Bot);
     });
-  }
+  };
 
   const launch = () => {
     console.log(xValue == decryptedCoordinates.x + "");
     if (xValue == decryptedCoordinates.x + "") {
-      if(xValue == decryptedCoordinates.x + ""){
-          addMessageToFeed(
-            <CircularProgress color="secondary" />,
-            UserType.Bot
-          );
+      if (yValue == decryptedCoordinates.y + "") {
+        setSuccess(true);
+        addMessageToFeed(
+          "Coordinates decrypted successfully! Launching...",
+          UserType.Bot
+        );
+        addMessageToFeed(
+          <a
+            href={"/GameOver"}
+            className="next-level-link flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
+          >
+            Click here to continue our adventure!
+          </a>,
+          UserType.Bot
+        );
         return;
       }
-      return;
     }
-  }
+    addMessageToFeed("Incorrect coordinates. Please try again.", UserType.Bot);
+  };
 
   return (
-    <div className="">
-      <Message
-        user={UserType.Astronaut}
-        message={`My coordinates are ##X:${encryptedCoordinates.x}## and ##Y:${encryptedCoordinates.y}##. I used the standard encryption method for this.`}
-      />
-      <div className="my-2">
-        <h3>ENTER DESTINATION COORDINATES</h3>
+    <div className="flex content-center">
+      <div className="w-fit">
+        <Message
+          user={UserType.Astronaut}
+          message={`My coordinates are ##X:${encryptedCoordinates.x}## and ##Y:${encryptedCoordinates.y}##. I used the standard encryption method for this.`}
+        />
         <div className="my-2">
-          <input
-            className="coordinate"
-            placeholder="X"
-            onChange={(e) => setXValue(e.target.value)}
-          ></input>
-          <input
-            className="coordinate"
-            placeholder="Y"
-            onChange={(e) => setYValue(e.target.value)}
-          ></input>
+          <h3>ENTER DESTINATION COORDINATES</h3>
+          <div className="my-2">
+            <input
+              className="coordinate"
+              placeholder="X"
+              onChange={(e) => setXValue(e.target.value)}
+            ></input>
+            <input
+              className="coordinate"
+              placeholder="Y"
+              onChange={(e) => setYValue(e.target.value)}
+            ></input>
+          </div>
+          <EncryptedButton text="LAUNCH" onClick={launch} />
         </div>
-        <EncryptedButton text="LAUNCH" onClick={launch}/>
+        <Conversation
+          messages={chatMessages}
+          onMessageSent={onMessageSent}
+          isAiThinking={false}
+        ></Conversation>
       </div>
-      <Conversation
-        messages={chatMessages}
-        onMessageSent={onMessageSent}
-        isAiThinking={false}
-      ></Conversation>
+      {success && (
+        <img src="\img\Space_Rocket.gif" alt="launch" className="launch-gif" />
+      )}
     </div>
   );
 }

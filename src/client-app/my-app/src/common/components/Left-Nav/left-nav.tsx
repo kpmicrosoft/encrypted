@@ -13,13 +13,13 @@ export default function LeftNav(): JSX.Element {
   const leftNavButtons: LeftNavButtonProps[] = [
     {
       text: "Play",
-        route: "/play",
-        icon: "play",
+      route: "/Level2",
+      icon: "play",
     },
     {
       text: "Leader Board",
       route: "/leaderboard",
-        icon: "img/leaderboard.png",
+      icon: "img/leaderboard.png",
     },
   ];
 

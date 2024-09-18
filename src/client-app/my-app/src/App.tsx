@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './pages/error/error';
 import { createTheme, ThemeProvider } from '@mui/material';
 import Decrypt from './pages/decrypt/decrypt';
+import GameOver from './common/components/GameOver/game-over';
 
 function App() {
   const router = createBrowserRouter([
@@ -21,31 +22,35 @@ function App() {
     },
     {
       path: "Dashboard",
-      element: <Dashboard />
+      element: <Dashboard />,
     },
     {
       path: "Profile",
-      element: <Profile />
+      element: <Profile />,
     },
     {
       path: "Level3",
-      element: <Decrypt />
-    }
-  ])
+      element: <Decrypt />,
+    },
+    {
+      path: "GameOver",
+      element: <GameOver />,
+    },
+  ]);
 
   const theme = createTheme({
     palette: {
       primary: {
-        light: "#757ce8",
-        main: "#3f50b5",
-        dark: "#002884",
-        contrastText: "#fff",
+        light: "#0c1624",
+        main: "#0c1624",
+        dark: "#0c1624",
+        contrastText: "#add2ee",
       },
       secondary: {
-        light: "#ff7961",
-        main: "#f44336",
-        dark: "#ba000d",
-        contrastText: "#000",
+        light: "#add2ee",
+        main: "#add2ee",
+        dark: "",
+        contrastText: "#0c1624",
       },
     },
   });

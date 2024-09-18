@@ -68,7 +68,7 @@ export default function SpotThePhish() {
       addMessageToFeed(
         <a
           href={"/level3"}
-          className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+          className="next-level-link flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
         >
           Click here to continue our adventure!
         </a>,
