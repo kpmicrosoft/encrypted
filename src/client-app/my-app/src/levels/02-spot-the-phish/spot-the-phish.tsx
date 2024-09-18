@@ -19,9 +19,9 @@ export default function SpotThePhish() {
 
 
   const onSosMessageClicked = (sosMessage: ISosMessage) => {
-    if(invalidMessages.indexOf(sosMessage.id)){
+    if (invalidMessages.indexOf(sosMessage.id)) {
       setChatMessages([...chatMessages, { message: "This is a fake distress call. Try again!", user: UserType.Bot }]);
-    } else {      
+    } else {
       setChatMessages([...chatMessages, { message: "This is a real distress call. Well done!", user: UserType.Bot }]);
     }
   }
@@ -40,7 +40,7 @@ export default function SpotThePhish() {
   const onMessageSent = (message: string) => {
     addMessageToFeed(message, UserType.User);
     sendMessageToAi(message).then((response) => {
-      addMessageToFeed(response.data.response[0].message, UserType.Bot);
+      addMessageToFeed(response.data.response, UserType.Bot);
     });
   }
 
@@ -53,7 +53,7 @@ export default function SpotThePhish() {
       <div>
         {sosMessageBoxes}
       </div>
-      <Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
+        <Conversation messages={chatMessages} onMessageSent={onMessageSent}></Conversation>
     </div>
   );
 }

@@ -4,13 +4,9 @@ import { Configuration, getConfig } from "../../../configuration";
 export function sendMessageToAi(message: string) {
   let config: Configuration = getConfig();
 
-  let url = `http://${config.url}:${config.port}/api/ai`;
+  let url = `http://${config.url}:${config.port}/api/chat_bot`;
   let body = {
-    query: message,
-    parameters: {
-      num_valid: 1,
-      num_responses: 1,
-      values: "message"}
+    query: message
   };
 
   const options = {
