@@ -4,7 +4,7 @@ export interface Configuration {
 }
 
 const devConfig: Configuration = {
-  url: "48.211.219.114",
+  url: "172.210.234.90",
   port: 5000,
 };
 
