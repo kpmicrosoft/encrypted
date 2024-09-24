@@ -12,7 +12,7 @@ pip install flask_cors
 
 ## Run the rest api
 
-export OPENAI_API_KEY="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"
+export OPENAI_API_KEY=" your key here "
 python3 api.py
 
 ## Run UI
